@@ -78,10 +78,21 @@ echo " .... Building utils .... "
 # build gsi
 #------------------------------------
 $Build_gsi && {
-echo " .... Building gsi .... "
-./build_gsi.sh > $logs_dir/build_gsi.log 2>&1
+echo " .... GSI build not currently supported .... "
+#echo " .... Building gsi .... "
+#./build_gsi.sh > $logs_dir/build_gsi.log 2>&1
 }
 
 echo;echo " .... Build system finished .... "
+echo;echo " .... Installing executables .... "
+
+./install_all.sh
+
+echo;echo " .... Installation finished .... "
+echo;echo " .... Linking fix files .... "
+
+./link_fix.sh
+
+echo;echo " .... Linking fix files finished .... "
 
 exit 0

@@ -1,0 +1,31 @@
+SHELL := bash
+
+MAKEFLAGS += --warn-undefined-variables
+
+INC  = -I${NETCDF_HOME}/include
+
+LIBS = ${NETCDF_HOME}/lib/libnetcdff.a ${NETCDF_HOME}/lib/libnetcdf.a \
+       ${HDF5_HOME}/lib/libhdf5_hl.a ${HDF5_HOME}/lib/libhdf5.a \
+       /gpfs/hps3/emc/meso/save/Ratko.Vasic/wrk/szip-2.1.1/lib/libsz.a \
+       /usr/lib64/libz.a
+
+FC = ftn
+FFLAGS = -g -O2 $(INC)
+
+EXEC = global_equiv_resol
+
+.PHONY: all
+all : $(EXEC)
+
+$(EXEC): global_equiv_resol.o $(LIBS)
+	$(FC) $(FFLAGS) -o $@ $^
+
+.SUFFIXES:
+.SUFFIXES: .f90 .o
+
+.f90.o:
+	$(FC) $(FFLAGS) -c $<
+
+.PHONY: clean
+clean:
+	rm -f *.o *.mod $(EXEC)
