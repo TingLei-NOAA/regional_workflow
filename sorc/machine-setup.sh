@@ -33,6 +33,9 @@ if [ "$platform" = "no_platform_specified" ]; then
     elif [[ -d /gpfs/hps && -e /etc/SuSE-release ]] ; then
         # We are on NOAA Luna or Surge
         platform=wcoss_cray
+    elif [[ -d /gpfs/dell1 ]] ; then
+        # We are on NOAA Mars or Venus
+        platform=wcoss_dell_p3
     elif [[ -d /dcom && -d /hwrf ]] ; then
         # We are on NOAA Tide or Gyre
         platform=wcoss
