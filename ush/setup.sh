@@ -746,7 +746,8 @@ fi
 #
 # Get the base directory of the chgres code.
 #
-external_name="ufs_utils_chgres"
+#external_name="ufs_utils_chgres"
+external_name="ufs_utils"
 CHGRES_DIR=$( \
 get_manage_externals_config_property \
 "${mng_extrns_cfg_fn}" "${external_name}" "${property_name}" ) || \

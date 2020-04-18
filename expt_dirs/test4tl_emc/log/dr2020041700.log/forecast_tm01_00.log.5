@@ -1,0 +1,1439 @@
+++ RUN_ENVIR=nco
+++ USER=Ting.Lei
+++ MACHINE=HERA
+++ ACCOUNT=fv3-cam
+++ QUEUE_DEFAULT=batch
+++ QUEUE_HPSS=service
+++ QUEUE_FCST=batch
+++ USE_CRON_TO_RELAUNCH=TRUE
+++ CRON_RELAUNCH_INTVL_MNTS=03
+++ EXPT_BASEDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs
+++ EXPT_SUBDIR=test4tl_emc
+++ NET=fv3cam
+++ envir=FV3SAR_exp1
+++ RUN=experiment_name_XX
+++ COMINgfs=/scratch1/NCEPDEV/rstprod/com/gfs/prod
+++ STMP=/scratch2/NCEPDEV/stmp3/Ting.Lei
+++ PTMP=/scratch2/NCEPDEV/stmp3/Ting.Lei
+++ COMROOT=/scratch2/NCEPDEV/stmp3/Ting.Lei/com
+++ GESROOT=/scratch2/NCEPDEV/stmp3/Ting.Lei/nwges
+++ RGNL_GRID_NML_FN=regional_grid.nml
+++ DATA_TABLE_FN=data_table
+++ DIAG_TABLE_FN=diag_table
+++ FIELD_TABLE_FN=field_table
+++ FV3_NML_FN=input.nml
+++ MODEL_CONFIG_FN=model_configure
+++ NEMS_CONFIG_FN=nems.configure
+++ WFLOW_XML_FN=FV3SAR_wflow.xml
+++ GLOBAL_VAR_DEFNS_FN=var_defns.sh
+++ WFLOW_LAUNCH_SCRIPT_FN=launch_FV3SAR_wflow.sh
+++ WFLOW_LAUNCH_LOG_FN=log.launch_FV3SAR_wflow
+++ DATE_FIRST_CYCL=20200214
+++ DATE_LAST_CYCL=20200214
+++ CYCL_HRS=("00" "12")
+++ export FCST_LEN_HRS=24
+++ FCST_LEN_HRS=24
+++ EXTRN_MDL_NAME_ICS=FV3GFS
+++ EXTRN_MDL_NAME_LBCS=FV3GFS
+++ export LBC_UPDATE_INTVL_HRS=6
+++ LBC_UPDATE_INTVL_HRS=6
+++ FV3GFS_FILE_FMT_ICS=nemsio
+++ FV3GFS_FILE_FMT_LBCS=nemsio
+++ USE_CCPP=FALSE
+++ CCPP_PHYS_SUITE=FV3_GSD_v0
+++ GRID_GEN_METHOD=JPgrid
+++ GFDLgrid_LON_T6_CTR=-97.5
+++ GFDLgrid_LAT_T6_CTR=35.5
+++ GFDLgrid_RES=384
+++ GFDLgrid_STRETCH_FAC=1.5
+++ GFDLgrid_REFINE_RATIO=3
+++ GFDLgrid_ISTART_OF_RGNL_DOM_ON_T6G=10
+++ GFDLgrid_IEND_OF_RGNL_DOM_ON_T6G=374
+++ GFDLgrid_JSTART_OF_RGNL_DOM_ON_T6G=10
+++ GFDLgrid_JEND_OF_RGNL_DOM_ON_T6G=374
+++ GFDLgrid_USE_GFDLgrid_RES_IN_FILENAMES=TRUE
+++ JPgrid_LON_CTR=-97.5
+++ JPgrid_LAT_CTR=38.5
+++ JPgrid_DELX=3000.0
+++ JPgrid_DELY=3000.0
+++ JPgrid_NX=960
+++ JPgrid_NY=960
+++ JPgrid_WIDE_HALO_WIDTH=6
+++ JPgrid_ALPHA_PARAM=0.21423
+++ JPgrid_KAPPA_PARAM=-0.23209
+++ DT_ATMOS=18
+++ LAYOUT_X=24
+++ LAYOUT_Y=54
+++ BLOCKSIZE=24
+++ QUILTING=TRUE
+++ PRINT_ESMF=TRUE
+++ WRTCMP_write_groups=2
+++ WRTCMP_write_tasks_per_group=54
+++ WRTCMP_output_grid=rotated_latlon
+++ WRTCMP_cen_lon=-97.5
+++ WRTCMP_cen_lat=38.5
+++ WRTCMP_lon_lwr_left=-25.0
+++ WRTCMP_lat_lwr_left=-15.0
+++ WRTCMP_lon_upr_rght=25.0
+++ WRTCMP_lat_upr_rght=15.0
+++ WRTCMP_dlon=0.02
+++ WRTCMP_dlat=0.02
+++ WRTCMP_stdlat1=
+++ WRTCMP_stdlat2=
+++ WRTCMP_nx=
+++ WRTCMP_ny=
+++ WRTCMP_dx=
+++ WRTCMP_dy=
+++ PREDEF_GRID_NAME=EMC_CONUS_3km
+++ EMC_GRID_NAME=conus
+++ PREEXISTING_DIR_METHOD=delete
+++ VERBOSE=TRUE
+++ RUN_TASK_MAKE_GRID=FALSE
+++ GRID_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ RUN_TASK_MAKE_OROG=FALSE
+++ OROG_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ RUN_TASK_MAKE_SFC_CLIMO=FALSE
+++ SFC_CLIMO_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ FIXgsm_FILENAMES=("CFSR.SEAICE.1982.2012.monthly.clim.grb" "RTGSST.1982.2012.monthly.clim.grb" "seaice_newland.grb" "global_climaeropac_global.txt" "global_albedo4.1x1.grb" "global_glacier.2x2.grb" "global_h2o_pltc.f77" "global_maxice.2x2.grb" "global_mxsnoalb.uariz.t126.384.190.rg.grb" "ozprdlos_2015_new_sbuvO3_tclm15_nuchem.f77" "global_shdmax.0.144x0.144.grb" "global_shdmin.0.144x0.144.grb" "global_slope.1x1.grb" "global_snoclim.1.875.grb" "global_snowfree_albedo.bosu.t126.384.190.rg.grb" "global_soilmgldas.t126.384.190.grb" "global_soiltype.statsgo.t126.384.190.rg.grb" "global_tg3clim.2.6x1.5.grb" "global_vegfrac.0.144.decpercent.grb" "global_vegtype.igbp.t126.384.190.rg.grb" "global_zorclim.1x1.grb" "global_sfc_emissivity_idx.txt" "global_solarconstant_noaa_an.txt" "fix_co2_proj/global_co2historicaldata_2010.txt" "fix_co2_proj/global_co2historicaldata_2011.txt" "fix_co2_proj/global_co2historicaldata_2012.txt" "fix_co2_proj/global_co2historicaldata_2013.txt" "fix_co2_proj/global_co2historicaldata_2014.txt" "fix_co2_proj/global_co2historicaldata_2015.txt" "fix_co2_proj/global_co2historicaldata_2016.txt" "fix_co2_proj/global_co2historicaldata_2017.txt" "fix_co2_proj/global_co2historicaldata_2018.txt" "global_co2historicaldata_glob.txt" "co2monthlycyc.txt")
+++ FIXam_FILENAMES=("CFSR.SEAICE.1982.2012.monthly.clim.grb" "RTGSST.1982.2012.monthly.clim.grb" "seaice_newland.grb" "aerosol.dat" "global_albedo4.1x1.grb" "global_glacier.2x2.grb" "global_h2oprdlos.f77" "global_maxice.2x2.grb" "global_mxsnoalb.uariz.t126.384.190.rg.grb" "global_o3prdlos.f77" "global_shdmax.0.144x0.144.grb" "global_shdmin.0.144x0.144.grb" "global_slope.1x1.grb" "global_snoclim.1.875.grb" "global_snowfree_albedo.bosu.t126.384.190.rg.grb" "global_soilmgldas.t126.384.190.grb" "global_soiltype.statsgo.t126.384.190.rg.grb" "global_tg3clim.2.6x1.5.grb" "global_vegfrac.0.144.decpercent.grb" "global_vegtype.igbp.t126.384.190.rg.grb" "global_zorclim.1x1.grb" "sfc_emissivity_idx.txt" "solarconstant_noaa_an.txt" "co2historicaldata_2010.txt" "co2historicaldata_2011.txt" "co2historicaldata_2012.txt" "co2historicaldata_2013.txt" "co2historicaldata_2014.txt" "co2historicaldata_2015.txt" "co2historicaldata_2016.txt" "co2historicaldata_2017.txt" "co2historicaldata_2018.txt" "co2historicaldata_glob.txt" "co2monthlycyc.txt")
+++ WFLOW_LAUNCH_SCRIPT_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/launch_FV3SAR_wflow.sh
+++ WFLOW_LAUNCH_LOG_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/log.launch_FV3SAR_wflow
+++ CRONTAB_LINE='*/03 * * * * cd /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc && ./launch_FV3SAR_wflow.sh >> ./log.launch_FV3SAR_wflow 2>&1'
+++ HOMErrfs=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow
+++ USHDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush
+++ SCRIPTSDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts
+++ JOBSDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs
+++ SORCDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc
+++ PARMDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/parm
+++ MODULES_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/modulefiles
+++ EXECDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/exec
+++ FIXrrfs=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix
+++ FIXam=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am
+++ FIXsar=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ FIXgsm=/scratch1/NCEPDEV/global/glopara/fix/fix_am
+++ FIXupp=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_upp
+++ FIXgsd=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_gsd
+++ COMROOT=/scratch2/NCEPDEV/stmp3//com
+++ TEMPLATE_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates
+++ UFS_WTHR_MDL_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/ufs-weather-model
+++ UFS_UTILS_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/UFS_UTILS_develop
+++ CHGRES_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/UFS_UTILS_develop
+++ SFC_CLIMO_INPUT_DIR=/scratch1/NCEPDEV/da/George.Gayno/ufs_utils.git/climo_fields_netcdf
+++ EXPTDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc
+++ LOGDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/log
+++ GRID_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ OROG_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ SFC_CLIMO_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ GLOBAL_VAR_DEFNS_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/var_defns.sh
+++ DATA_TABLE_TMPL_FN=data_table
+++ DIAG_TABLE_TMPL_FN=diag_table
+++ FIELD_TABLE_TMPL_FN=field_table
+++ FV3_NML_TMPL_FN=input.nml
+++ MODEL_CONFIG_TMPL_FN=model_configure
+++ NEMS_CONFIG_TMPL_FN=nems.configure
+++ DATA_TABLE_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/data_table
+++ DIAG_TABLE_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/diag_table
+++ FIELD_TABLE_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/field_table
+++ FV3_NML_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/input.nml
+++ MODEL_CONFIG_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/model_configure
+++ NEMS_CONFIG_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/nems.configure
+++ CCPP_PHYS_SUITE_FN=
+++ CCPP_PHYS_SUITE_IN_CCPP_FP=
+++ CCPP_PHYS_SUITE_FP=
+++ DATA_TABLE_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/data_table
+++ FIELD_TABLE_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/field_table
+++ FV3_NML_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/input.nml
+++ NEMS_CONFIG_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/nems.configure
+++ WRTCMP_PARAMS_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/wrtcmp_regional_latlon
+++ MAKE_GRID_TN=make_grid
+++ MAKE_OROG_TN=make_orog
+++ MAKE_SFC_CLIMO_TN=make_sfc_climo
+++ GET_EXTRN_ICS_TN=get_extrn_ics
+++ GET_EXTRN_LBCS_TN=get_extrn_lbcs
+++ MAKE_ICS_TN=make_ics
+++ MAKE_LBCS_TN=make_lbcs
+++ RUN_FCST_TN=run_fcst
+++ RUN_POST_TN=run_post
+++ GTYPE=regional
+++ TILE_RGNL=7
+++ NH0=0
+++ NH3=3
+++ NH4=4
+++ LON_CTR=-97.5
+++ LAT_CTR=38.5
+++ NX=1920
+++ NY=1296
+++ NHW=6
+++ STRETCH_FAC=1.5
+++ RES_IN_FIXSAR_FILENAMES=768
+++ CRES=C768
+++ ISTART_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=-3
+++ IEND_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=1540
+++ JSTART_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=-3
+++ JEND_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=1540
+++ NUM_FIXam_FILES=34
+++ EXTRN_MDL_FILES_SYSBASEDIR_ICS=/scratch1/NCEPDEV/rstprod/com/gfs/prod
+++ EXTRN_MDL_FILES_SYSBASEDIR_LBCS=/scratch1/NCEPDEV/rstprod/com/gfs/prod
+++ EXTRN_MDL_LBCS_OFFSET_HRS=0
+++ set -xu
+++ unset default_array
+++ default_array=(0 3 6)
+++ echo 'thinkdeb 251 before ' ' Not intialized'
+thinkdeb 251 before   Not intialized
+++ LBC_UPDATE_FCST_HRS=(${LBC_UPDATE_FCST_HRS[@]:-"${default_array[@]}" })
+++ echo 'thinkdeb251 LBC?? is 0'
+thinkdeb251 LBC?? is 0
+++ num_fhrs=3
+++ echo 'thinkdeb250 1 num_fhrs = ' 3
+thinkdeb250 1 num_fhrs =  3
+++ NCORES_PER_NODE=24
+++ PE_MEMBER01=1404
+++ export NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
+++ NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
+++ export UTIL=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/regional_workflow/util/ush/
+++ UTIL=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/regional_workflow/util/ush/
+++ HOMErrfs=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow
+++ export PARMfv3=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/parm
+++ PARMfv3=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/parm
+++ export fixgsi=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/dev_GSI_fix
+++ fixgsi=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/dev_GSI_fix
+++ export fixcrtm=/scratch1/NCEPDEV/da/Michael.Lueken/CRTM_REL-2.2.3/crtm_v2.2.3/fix_update
+++ fixcrtm=/scratch1/NCEPDEV/da/Michael.Lueken/CRTM_REL-2.2.3/crtm_v2.2.3/fix_update
+++ export COMINrap=/scratch1/NCEPDEV/rstprod/com/rap/prod
+++ COMINrap=/scratch1/NCEPDEV/rstprod/com/rap/prod
+++ export COMINrap_user=/scratch2/NCEPDEV/stmp1/Ting.Lei/dr-obs
+++ COMINrap_user=/scratch2/NCEPDEV/stmp1/Ting.Lei/dr-obs
+++ export GESROOT_HOLD=/scratch2/NCEPDEV/stmp3/Ting.Lei/nwges/fv3cam.hold
+++ GESROOT_HOLD=/scratch2/NCEPDEV/stmp3/Ting.Lei/nwges/fv3cam.hold
+++ export gsiexec=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-CAM_new/dr-add_ensemble_dualv1mix1/ProdGSI/build/bin/gsi.x
+++ gsiexec=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-CAM_new/dr-add_ensemble_dualv1mix1/ProdGSI/build/bin/gsi.x
+++ '[' FV3GFS = FV3GFS ']'
+++ echo 'thinkdeb251 tmmark is ' tm01
+thinkdeb251 tmmark is  tm01
+++ '[' tm01 = tm12 ']'
+++ '[' tm01 = tm00 ']'
+++ offset=06
++++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate -06 2020041700
+++ cdate_FV3SAR=2020041618
++++ cut -c 3-4
++++ echo tm01
+++ offset2=01
+++ echo 'thinkdeb here'
+thinkdeb here
+++ LBC_UPDATE_FCST_HRS=(0 1)
+++ export LBC_UPDATE_FCST_HRS
+++ num_fhrs=2
+++ (( i=0 ))
+++ (( i<=1 ))
+++ LBC_UPDATE_FCST_HRS[$i]=5
+++ (( i++  ))
+++ (( i<=1 ))
+++ LBC_UPDATE_FCST_HRS[$i]=6
+++ (( i++  ))
+++ (( i<=1 ))
+++ offset=0
++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ source_util_funcs
++++ readlink -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ local scrfunc_fp=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
++++ basename /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ local scrfunc_fn=source_util_funcs.sh
++++ dirname /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ local scrfunc_dir=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush
+++ local func_name=source_util_funcs
+++ local bashutils_dir=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/save_restore_shell_opts.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/print_msg.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/set_bash_param.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/set_file_param.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/count_files.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/check_for_preexist_dir.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/filesys_cmds_vrfy.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/is_element_of.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/get_elem_inds.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/is_array.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/interpol_to_arbit_CRES.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/check_var_valid_value.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/print_input_args.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/process_args.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/get_manage_externals_config_property.sh
+
+Initializing the shell function "module()" (and others) in order to be
+able to use "module load ..." to load necessary modules ...
+
+Loading modules for task "run_fcst" ...
+
+Currently Loaded Modules:
+  1) contrib            9) w3emc/2.3.1     17) post/8.0.4
+  2) sutils/default    10) w3nco/2.0.7     18) hdf5_parallel/1.10.6
+  3) intel/18.0.5.274  11) g2/3.1.1        19) netcdf_parallel/4.7.4
+  4) impi/2018.0.4     12) g2tmpl/1.6.0    20) esmf/8.0.0_ParallelNetCDF
+  5) bacio/2.0.3       13) crtm/2.2.6      21) cmake/3.9.0
+  6) ip/3.0.2          14) jasper/1.900.1  22) run_fcst
+  7) nemsio/2.2.4      15) png/1.2.44
+  8) sp/2.0.3          16) z/1.2.11
+
+ 
+
+
+Launching J-job (jjob_fp) for task "run_fcst" ...
+  jjob_fp = "/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs/dev-JREGIONAL_RUN_FCST"
+
+++ RUN_ENVIR=nco
+++ USER=Ting.Lei
+++ MACHINE=HERA
+++ ACCOUNT=fv3-cam
+++ QUEUE_DEFAULT=batch
+++ QUEUE_HPSS=service
+++ QUEUE_FCST=batch
+++ USE_CRON_TO_RELAUNCH=TRUE
+++ CRON_RELAUNCH_INTVL_MNTS=03
+++ EXPT_BASEDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs
+++ EXPT_SUBDIR=test4tl_emc
+++ NET=fv3cam
+++ envir=FV3SAR_exp1
+++ RUN=experiment_name_XX
+++ COMINgfs=/scratch1/NCEPDEV/rstprod/com/gfs/prod
+++ STMP=/scratch2/NCEPDEV/stmp3/Ting.Lei
+++ PTMP=/scratch2/NCEPDEV/stmp3/Ting.Lei
+++ COMROOT=/scratch2/NCEPDEV/stmp3/Ting.Lei/com
+++ GESROOT=/scratch2/NCEPDEV/stmp3/Ting.Lei/nwges
+++ RGNL_GRID_NML_FN=regional_grid.nml
+++ DATA_TABLE_FN=data_table
+++ DIAG_TABLE_FN=diag_table
+++ FIELD_TABLE_FN=field_table
+++ FV3_NML_FN=input.nml
+++ MODEL_CONFIG_FN=model_configure
+++ NEMS_CONFIG_FN=nems.configure
+++ WFLOW_XML_FN=FV3SAR_wflow.xml
+++ GLOBAL_VAR_DEFNS_FN=var_defns.sh
+++ WFLOW_LAUNCH_SCRIPT_FN=launch_FV3SAR_wflow.sh
+++ WFLOW_LAUNCH_LOG_FN=log.launch_FV3SAR_wflow
+++ DATE_FIRST_CYCL=20200214
+++ DATE_LAST_CYCL=20200214
+++ CYCL_HRS=("00" "12")
+++ export FCST_LEN_HRS=24
+++ FCST_LEN_HRS=24
+++ EXTRN_MDL_NAME_ICS=FV3GFS
+++ EXTRN_MDL_NAME_LBCS=FV3GFS
+++ export LBC_UPDATE_INTVL_HRS=6
+++ LBC_UPDATE_INTVL_HRS=6
+++ FV3GFS_FILE_FMT_ICS=nemsio
+++ FV3GFS_FILE_FMT_LBCS=nemsio
+++ USE_CCPP=FALSE
+++ CCPP_PHYS_SUITE=FV3_GSD_v0
+++ GRID_GEN_METHOD=JPgrid
+++ GFDLgrid_LON_T6_CTR=-97.5
+++ GFDLgrid_LAT_T6_CTR=35.5
+++ GFDLgrid_RES=384
+++ GFDLgrid_STRETCH_FAC=1.5
+++ GFDLgrid_REFINE_RATIO=3
+++ GFDLgrid_ISTART_OF_RGNL_DOM_ON_T6G=10
+++ GFDLgrid_IEND_OF_RGNL_DOM_ON_T6G=374
+++ GFDLgrid_JSTART_OF_RGNL_DOM_ON_T6G=10
+++ GFDLgrid_JEND_OF_RGNL_DOM_ON_T6G=374
+++ GFDLgrid_USE_GFDLgrid_RES_IN_FILENAMES=TRUE
+++ JPgrid_LON_CTR=-97.5
+++ JPgrid_LAT_CTR=38.5
+++ JPgrid_DELX=3000.0
+++ JPgrid_DELY=3000.0
+++ JPgrid_NX=960
+++ JPgrid_NY=960
+++ JPgrid_WIDE_HALO_WIDTH=6
+++ JPgrid_ALPHA_PARAM=0.21423
+++ JPgrid_KAPPA_PARAM=-0.23209
+++ DT_ATMOS=18
+++ LAYOUT_X=24
+++ LAYOUT_Y=54
+++ BLOCKSIZE=24
+++ QUILTING=TRUE
+++ PRINT_ESMF=TRUE
+++ WRTCMP_write_groups=2
+++ WRTCMP_write_tasks_per_group=54
+++ WRTCMP_output_grid=rotated_latlon
+++ WRTCMP_cen_lon=-97.5
+++ WRTCMP_cen_lat=38.5
+++ WRTCMP_lon_lwr_left=-25.0
+++ WRTCMP_lat_lwr_left=-15.0
+++ WRTCMP_lon_upr_rght=25.0
+++ WRTCMP_lat_upr_rght=15.0
+++ WRTCMP_dlon=0.02
+++ WRTCMP_dlat=0.02
+++ WRTCMP_stdlat1=
+++ WRTCMP_stdlat2=
+++ WRTCMP_nx=
+++ WRTCMP_ny=
+++ WRTCMP_dx=
+++ WRTCMP_dy=
+++ PREDEF_GRID_NAME=EMC_CONUS_3km
+++ EMC_GRID_NAME=conus
+++ PREEXISTING_DIR_METHOD=delete
+++ VERBOSE=TRUE
+++ RUN_TASK_MAKE_GRID=FALSE
+++ GRID_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ RUN_TASK_MAKE_OROG=FALSE
+++ OROG_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ RUN_TASK_MAKE_SFC_CLIMO=FALSE
+++ SFC_CLIMO_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ FIXgsm_FILENAMES=("CFSR.SEAICE.1982.2012.monthly.clim.grb" "RTGSST.1982.2012.monthly.clim.grb" "seaice_newland.grb" "global_climaeropac_global.txt" "global_albedo4.1x1.grb" "global_glacier.2x2.grb" "global_h2o_pltc.f77" "global_maxice.2x2.grb" "global_mxsnoalb.uariz.t126.384.190.rg.grb" "ozprdlos_2015_new_sbuvO3_tclm15_nuchem.f77" "global_shdmax.0.144x0.144.grb" "global_shdmin.0.144x0.144.grb" "global_slope.1x1.grb" "global_snoclim.1.875.grb" "global_snowfree_albedo.bosu.t126.384.190.rg.grb" "global_soilmgldas.t126.384.190.grb" "global_soiltype.statsgo.t126.384.190.rg.grb" "global_tg3clim.2.6x1.5.grb" "global_vegfrac.0.144.decpercent.grb" "global_vegtype.igbp.t126.384.190.rg.grb" "global_zorclim.1x1.grb" "global_sfc_emissivity_idx.txt" "global_solarconstant_noaa_an.txt" "fix_co2_proj/global_co2historicaldata_2010.txt" "fix_co2_proj/global_co2historicaldata_2011.txt" "fix_co2_proj/global_co2historicaldata_2012.txt" "fix_co2_proj/global_co2historicaldata_2013.txt" "fix_co2_proj/global_co2historicaldata_2014.txt" "fix_co2_proj/global_co2historicaldata_2015.txt" "fix_co2_proj/global_co2historicaldata_2016.txt" "fix_co2_proj/global_co2historicaldata_2017.txt" "fix_co2_proj/global_co2historicaldata_2018.txt" "global_co2historicaldata_glob.txt" "co2monthlycyc.txt")
+++ FIXam_FILENAMES=("CFSR.SEAICE.1982.2012.monthly.clim.grb" "RTGSST.1982.2012.monthly.clim.grb" "seaice_newland.grb" "aerosol.dat" "global_albedo4.1x1.grb" "global_glacier.2x2.grb" "global_h2oprdlos.f77" "global_maxice.2x2.grb" "global_mxsnoalb.uariz.t126.384.190.rg.grb" "global_o3prdlos.f77" "global_shdmax.0.144x0.144.grb" "global_shdmin.0.144x0.144.grb" "global_slope.1x1.grb" "global_snoclim.1.875.grb" "global_snowfree_albedo.bosu.t126.384.190.rg.grb" "global_soilmgldas.t126.384.190.grb" "global_soiltype.statsgo.t126.384.190.rg.grb" "global_tg3clim.2.6x1.5.grb" "global_vegfrac.0.144.decpercent.grb" "global_vegtype.igbp.t126.384.190.rg.grb" "global_zorclim.1x1.grb" "sfc_emissivity_idx.txt" "solarconstant_noaa_an.txt" "co2historicaldata_2010.txt" "co2historicaldata_2011.txt" "co2historicaldata_2012.txt" "co2historicaldata_2013.txt" "co2historicaldata_2014.txt" "co2historicaldata_2015.txt" "co2historicaldata_2016.txt" "co2historicaldata_2017.txt" "co2historicaldata_2018.txt" "co2historicaldata_glob.txt" "co2monthlycyc.txt")
+++ WFLOW_LAUNCH_SCRIPT_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/launch_FV3SAR_wflow.sh
+++ WFLOW_LAUNCH_LOG_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/log.launch_FV3SAR_wflow
+++ CRONTAB_LINE='*/03 * * * * cd /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc && ./launch_FV3SAR_wflow.sh >> ./log.launch_FV3SAR_wflow 2>&1'
+++ HOMErrfs=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow
+++ USHDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush
+++ SCRIPTSDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts
+++ JOBSDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs
+++ SORCDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc
+++ PARMDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/parm
+++ MODULES_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/modulefiles
+++ EXECDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/exec
+++ FIXrrfs=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix
+++ FIXam=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am
+++ FIXsar=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ FIXgsm=/scratch1/NCEPDEV/global/glopara/fix/fix_am
+++ FIXupp=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_upp
+++ FIXgsd=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_gsd
+++ COMROOT=/scratch2/NCEPDEV/stmp3//com
+++ TEMPLATE_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates
+++ UFS_WTHR_MDL_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/ufs-weather-model
+++ UFS_UTILS_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/UFS_UTILS_develop
+++ CHGRES_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/UFS_UTILS_develop
+++ SFC_CLIMO_INPUT_DIR=/scratch1/NCEPDEV/da/George.Gayno/ufs_utils.git/climo_fields_netcdf
+++ EXPTDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc
+++ LOGDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/log
+++ GRID_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ OROG_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ SFC_CLIMO_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ GLOBAL_VAR_DEFNS_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/var_defns.sh
+++ DATA_TABLE_TMPL_FN=data_table
+++ DIAG_TABLE_TMPL_FN=diag_table
+++ FIELD_TABLE_TMPL_FN=field_table
+++ FV3_NML_TMPL_FN=input.nml
+++ MODEL_CONFIG_TMPL_FN=model_configure
+++ NEMS_CONFIG_TMPL_FN=nems.configure
+++ DATA_TABLE_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/data_table
+++ DIAG_TABLE_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/diag_table
+++ FIELD_TABLE_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/field_table
+++ FV3_NML_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/input.nml
+++ MODEL_CONFIG_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/model_configure
+++ NEMS_CONFIG_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/nems.configure
+++ CCPP_PHYS_SUITE_FN=
+++ CCPP_PHYS_SUITE_IN_CCPP_FP=
+++ CCPP_PHYS_SUITE_FP=
+++ DATA_TABLE_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/data_table
+++ FIELD_TABLE_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/field_table
+++ FV3_NML_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/input.nml
+++ NEMS_CONFIG_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/nems.configure
+++ WRTCMP_PARAMS_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/wrtcmp_regional_latlon
+++ MAKE_GRID_TN=make_grid
+++ MAKE_OROG_TN=make_orog
+++ MAKE_SFC_CLIMO_TN=make_sfc_climo
+++ GET_EXTRN_ICS_TN=get_extrn_ics
+++ GET_EXTRN_LBCS_TN=get_extrn_lbcs
+++ MAKE_ICS_TN=make_ics
+++ MAKE_LBCS_TN=make_lbcs
+++ RUN_FCST_TN=run_fcst
+++ RUN_POST_TN=run_post
+++ GTYPE=regional
+++ TILE_RGNL=7
+++ NH0=0
+++ NH3=3
+++ NH4=4
+++ LON_CTR=-97.5
+++ LAT_CTR=38.5
+++ NX=1920
+++ NY=1296
+++ NHW=6
+++ STRETCH_FAC=1.5
+++ RES_IN_FIXSAR_FILENAMES=768
+++ CRES=C768
+++ ISTART_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=-3
+++ IEND_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=1540
+++ JSTART_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=-3
+++ JEND_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=1540
+++ NUM_FIXam_FILES=34
+++ EXTRN_MDL_FILES_SYSBASEDIR_ICS=/scratch1/NCEPDEV/rstprod/com/gfs/prod
+++ EXTRN_MDL_FILES_SYSBASEDIR_LBCS=/scratch1/NCEPDEV/rstprod/com/gfs/prod
+++ EXTRN_MDL_LBCS_OFFSET_HRS=0
+++ set -xu
+++ unset default_array
+++ default_array=(0 3 6)
+++ echo 'thinkdeb 251 before ' ' Not intialized'
+thinkdeb 251 before   Not intialized
+++ LBC_UPDATE_FCST_HRS=(${LBC_UPDATE_FCST_HRS[@]:-"${default_array[@]}" })
+++ echo 'thinkdeb251 LBC?? is 0'
+thinkdeb251 LBC?? is 0
+++ num_fhrs=3
+++ echo 'thinkdeb250 1 num_fhrs = ' 3
+thinkdeb250 1 num_fhrs =  3
+++ NCORES_PER_NODE=24
+++ PE_MEMBER01=1404
+++ export NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
+++ NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
+++ export UTIL=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/regional_workflow/util/ush/
+++ UTIL=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/regional_workflow/util/ush/
+++ HOMErrfs=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow
+++ export PARMfv3=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/parm
+++ PARMfv3=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/parm
+++ export fixgsi=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/dev_GSI_fix
+++ fixgsi=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/dev_GSI_fix
+++ export fixcrtm=/scratch1/NCEPDEV/da/Michael.Lueken/CRTM_REL-2.2.3/crtm_v2.2.3/fix_update
+++ fixcrtm=/scratch1/NCEPDEV/da/Michael.Lueken/CRTM_REL-2.2.3/crtm_v2.2.3/fix_update
+++ export COMINrap=/scratch1/NCEPDEV/rstprod/com/rap/prod
+++ COMINrap=/scratch1/NCEPDEV/rstprod/com/rap/prod
+++ export COMINrap_user=/scratch2/NCEPDEV/stmp1/Ting.Lei/dr-obs
+++ COMINrap_user=/scratch2/NCEPDEV/stmp1/Ting.Lei/dr-obs
+++ export GESROOT_HOLD=/scratch2/NCEPDEV/stmp3/Ting.Lei/nwges/fv3cam.hold
+++ GESROOT_HOLD=/scratch2/NCEPDEV/stmp3/Ting.Lei/nwges/fv3cam.hold
+++ export gsiexec=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-CAM_new/dr-add_ensemble_dualv1mix1/ProdGSI/build/bin/gsi.x
+++ gsiexec=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-CAM_new/dr-add_ensemble_dualv1mix1/ProdGSI/build/bin/gsi.x
+++ '[' FV3GFS = FV3GFS ']'
+++ echo 'thinkdeb251 tmmark is ' tm01
+thinkdeb251 tmmark is  tm01
+++ '[' tm01 = tm12 ']'
+++ '[' tm01 = tm00 ']'
+++ offset=06
++++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate -06 2020041700
+++ cdate_FV3SAR=2020041618
++++ echo tm01
++++ cut -c 3-4
+++ offset2=01
+++ echo 'thinkdeb here'
+thinkdeb here
+++ LBC_UPDATE_FCST_HRS=(0 1)
+++ export LBC_UPDATE_FCST_HRS
+++ num_fhrs=2
+++ (( i=0 ))
+++ (( i<=1 ))
+++ LBC_UPDATE_FCST_HRS[$i]=5
+++ (( i++  ))
+++ (( i<=1 ))
+++ LBC_UPDATE_FCST_HRS[$i]=6
+++ (( i++  ))
+++ (( i<=1 ))
+++ offset=0
++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ source_util_funcs
++++ readlink -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ local scrfunc_fp=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
++++ basename /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ local scrfunc_fn=source_util_funcs.sh
++++ dirname /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ local scrfunc_dir=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush
+++ local func_name=source_util_funcs
+++ local bashutils_dir=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/save_restore_shell_opts.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/print_msg.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/set_bash_param.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/set_file_param.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/count_files.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/check_for_preexist_dir.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/filesys_cmds_vrfy.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/is_element_of.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/get_elem_inds.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/is_array.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/interpol_to_arbit_CRES.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/check_var_valid_value.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/print_input_args.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/process_args.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/get_manage_externals_config_property.sh
+++ readlink -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs/dev-JREGIONAL_RUN_FCST
++ scrfunc_fp=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs/dev-JREGIONAL_RUN_FCST
+++ basename /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs/dev-JREGIONAL_RUN_FCST
++ scrfunc_fn=dev-JREGIONAL_RUN_FCST
+++ dirname /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs/dev-JREGIONAL_RUN_FCST
++ scrfunc_dir=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs
++ print_info_msg '
+========================================================================
+Entering script:  "dev-JREGIONAL_RUN_FCST"
+In directory:     "/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs"
+
+This is the J-job script for the task that runs a forecast with FV3 for 
+the specified cycle.
+========================================================================'
+
+========================================================================
+Entering script:  "dev-JREGIONAL_RUN_FCST"
+In directory:     "/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs"
+
+This is the J-job script for the task that runs a forecast with FV3 for 
+the specified cycle.
+========================================================================
++ '[' tm01 = tm12 ']'
+++ cut -c 3-4
+++ echo tm01
++ nexthr=0
++ '[' 0 -lt 0 ']'
+++ printf %02d 0
++ tmmark_next=tm00
+++ echo 2020041700
+++ cut -c 1-8
++ export PDY=20200417
++ PDY=20200417
+++ echo 2020041700
+++ cut -c 9-10
++ export CYC=00
++ CYC=00
++ export COMOUT=/scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00
++ COMOUT=/scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00
++ export GUESSdir=/scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/guess.tm00
++ GUESSdir=/scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/guess.tm00
++ mkdir_vrfy -p /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/guess.tm00
++ export DATA=/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00
++ DATA=/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00
++ mkdir_vrfy -p /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00
++ mkdir_vrfy -p /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/INPUT
++ mkdir_vrfy -p /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/RESTART
+++ echo tm00
+++ cut -c 3-4
++ offset_fcst=00
+++ echo tm01
+++ cut -c 3-4
++ offset_init=01
+++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate -00 2020041700
++ export CYCLEfcst=2020041700
++ CYCLEfcst=2020041700
+++ echo 2020041700
+++ cut -c 1-8
++ export PDYfcst=20200417
++ PDYfcst=20200417
+++ cut -c 9-10
+++ echo 2020041700
++ export CYCfcst=00
++ CYCfcst=00
+++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate -01 2020041700
++ export CYCLEinit=2020041623
++ CYCLEinit=2020041623
++ export GUESSdir=/scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/guess.tm00
++ GUESSdir=/scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/guess.tm00
++ mkdir -p /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/guess.tm00
++ export ANLdir=/scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm00
++ ANLdir=/scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm00
++ mkdir -p /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm00
++ /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts/dev-exregional_run_fcst.sh CYCLE_DIR=/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700
+++ RUN_ENVIR=nco
+++ USER=Ting.Lei
+++ MACHINE=HERA
+++ ACCOUNT=fv3-cam
+++ QUEUE_DEFAULT=batch
+++ QUEUE_HPSS=service
+++ QUEUE_FCST=batch
+++ USE_CRON_TO_RELAUNCH=TRUE
+++ CRON_RELAUNCH_INTVL_MNTS=03
+++ EXPT_BASEDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs
+++ EXPT_SUBDIR=test4tl_emc
+++ NET=fv3cam
+++ envir=FV3SAR_exp1
+++ RUN=experiment_name_XX
+++ COMINgfs=/scratch1/NCEPDEV/rstprod/com/gfs/prod
+++ STMP=/scratch2/NCEPDEV/stmp3/Ting.Lei
+++ PTMP=/scratch2/NCEPDEV/stmp3/Ting.Lei
+++ COMROOT=/scratch2/NCEPDEV/stmp3/Ting.Lei/com
+++ GESROOT=/scratch2/NCEPDEV/stmp3/Ting.Lei/nwges
+++ RGNL_GRID_NML_FN=regional_grid.nml
+++ DATA_TABLE_FN=data_table
+++ DIAG_TABLE_FN=diag_table
+++ FIELD_TABLE_FN=field_table
+++ FV3_NML_FN=input.nml
+++ MODEL_CONFIG_FN=model_configure
+++ NEMS_CONFIG_FN=nems.configure
+++ WFLOW_XML_FN=FV3SAR_wflow.xml
+++ GLOBAL_VAR_DEFNS_FN=var_defns.sh
+++ WFLOW_LAUNCH_SCRIPT_FN=launch_FV3SAR_wflow.sh
+++ WFLOW_LAUNCH_LOG_FN=log.launch_FV3SAR_wflow
+++ DATE_FIRST_CYCL=20200214
+++ DATE_LAST_CYCL=20200214
+++ CYCL_HRS=("00" "12")
+++ export FCST_LEN_HRS=24
+++ FCST_LEN_HRS=24
+++ EXTRN_MDL_NAME_ICS=FV3GFS
+++ EXTRN_MDL_NAME_LBCS=FV3GFS
+++ export LBC_UPDATE_INTVL_HRS=6
+++ LBC_UPDATE_INTVL_HRS=6
+++ FV3GFS_FILE_FMT_ICS=nemsio
+++ FV3GFS_FILE_FMT_LBCS=nemsio
+++ USE_CCPP=FALSE
+++ CCPP_PHYS_SUITE=FV3_GSD_v0
+++ GRID_GEN_METHOD=JPgrid
+++ GFDLgrid_LON_T6_CTR=-97.5
+++ GFDLgrid_LAT_T6_CTR=35.5
+++ GFDLgrid_RES=384
+++ GFDLgrid_STRETCH_FAC=1.5
+++ GFDLgrid_REFINE_RATIO=3
+++ GFDLgrid_ISTART_OF_RGNL_DOM_ON_T6G=10
+++ GFDLgrid_IEND_OF_RGNL_DOM_ON_T6G=374
+++ GFDLgrid_JSTART_OF_RGNL_DOM_ON_T6G=10
+++ GFDLgrid_JEND_OF_RGNL_DOM_ON_T6G=374
+++ GFDLgrid_USE_GFDLgrid_RES_IN_FILENAMES=TRUE
+++ JPgrid_LON_CTR=-97.5
+++ JPgrid_LAT_CTR=38.5
+++ JPgrid_DELX=3000.0
+++ JPgrid_DELY=3000.0
+++ JPgrid_NX=960
+++ JPgrid_NY=960
+++ JPgrid_WIDE_HALO_WIDTH=6
+++ JPgrid_ALPHA_PARAM=0.21423
+++ JPgrid_KAPPA_PARAM=-0.23209
+++ DT_ATMOS=18
+++ LAYOUT_X=24
+++ LAYOUT_Y=54
+++ BLOCKSIZE=24
+++ QUILTING=TRUE
+++ PRINT_ESMF=TRUE
+++ WRTCMP_write_groups=2
+++ WRTCMP_write_tasks_per_group=54
+++ WRTCMP_output_grid=rotated_latlon
+++ WRTCMP_cen_lon=-97.5
+++ WRTCMP_cen_lat=38.5
+++ WRTCMP_lon_lwr_left=-25.0
+++ WRTCMP_lat_lwr_left=-15.0
+++ WRTCMP_lon_upr_rght=25.0
+++ WRTCMP_lat_upr_rght=15.0
+++ WRTCMP_dlon=0.02
+++ WRTCMP_dlat=0.02
+++ WRTCMP_stdlat1=
+++ WRTCMP_stdlat2=
+++ WRTCMP_nx=
+++ WRTCMP_ny=
+++ WRTCMP_dx=
+++ WRTCMP_dy=
+++ PREDEF_GRID_NAME=EMC_CONUS_3km
+++ EMC_GRID_NAME=conus
+++ PREEXISTING_DIR_METHOD=delete
+++ VERBOSE=TRUE
+++ RUN_TASK_MAKE_GRID=FALSE
+++ GRID_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ RUN_TASK_MAKE_OROG=FALSE
+++ OROG_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ RUN_TASK_MAKE_SFC_CLIMO=FALSE
+++ SFC_CLIMO_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ FIXgsm_FILENAMES=("CFSR.SEAICE.1982.2012.monthly.clim.grb" "RTGSST.1982.2012.monthly.clim.grb" "seaice_newland.grb" "global_climaeropac_global.txt" "global_albedo4.1x1.grb" "global_glacier.2x2.grb" "global_h2o_pltc.f77" "global_maxice.2x2.grb" "global_mxsnoalb.uariz.t126.384.190.rg.grb" "ozprdlos_2015_new_sbuvO3_tclm15_nuchem.f77" "global_shdmax.0.144x0.144.grb" "global_shdmin.0.144x0.144.grb" "global_slope.1x1.grb" "global_snoclim.1.875.grb" "global_snowfree_albedo.bosu.t126.384.190.rg.grb" "global_soilmgldas.t126.384.190.grb" "global_soiltype.statsgo.t126.384.190.rg.grb" "global_tg3clim.2.6x1.5.grb" "global_vegfrac.0.144.decpercent.grb" "global_vegtype.igbp.t126.384.190.rg.grb" "global_zorclim.1x1.grb" "global_sfc_emissivity_idx.txt" "global_solarconstant_noaa_an.txt" "fix_co2_proj/global_co2historicaldata_2010.txt" "fix_co2_proj/global_co2historicaldata_2011.txt" "fix_co2_proj/global_co2historicaldata_2012.txt" "fix_co2_proj/global_co2historicaldata_2013.txt" "fix_co2_proj/global_co2historicaldata_2014.txt" "fix_co2_proj/global_co2historicaldata_2015.txt" "fix_co2_proj/global_co2historicaldata_2016.txt" "fix_co2_proj/global_co2historicaldata_2017.txt" "fix_co2_proj/global_co2historicaldata_2018.txt" "global_co2historicaldata_glob.txt" "co2monthlycyc.txt")
+++ FIXam_FILENAMES=("CFSR.SEAICE.1982.2012.monthly.clim.grb" "RTGSST.1982.2012.monthly.clim.grb" "seaice_newland.grb" "aerosol.dat" "global_albedo4.1x1.grb" "global_glacier.2x2.grb" "global_h2oprdlos.f77" "global_maxice.2x2.grb" "global_mxsnoalb.uariz.t126.384.190.rg.grb" "global_o3prdlos.f77" "global_shdmax.0.144x0.144.grb" "global_shdmin.0.144x0.144.grb" "global_slope.1x1.grb" "global_snoclim.1.875.grb" "global_snowfree_albedo.bosu.t126.384.190.rg.grb" "global_soilmgldas.t126.384.190.grb" "global_soiltype.statsgo.t126.384.190.rg.grb" "global_tg3clim.2.6x1.5.grb" "global_vegfrac.0.144.decpercent.grb" "global_vegtype.igbp.t126.384.190.rg.grb" "global_zorclim.1x1.grb" "sfc_emissivity_idx.txt" "solarconstant_noaa_an.txt" "co2historicaldata_2010.txt" "co2historicaldata_2011.txt" "co2historicaldata_2012.txt" "co2historicaldata_2013.txt" "co2historicaldata_2014.txt" "co2historicaldata_2015.txt" "co2historicaldata_2016.txt" "co2historicaldata_2017.txt" "co2historicaldata_2018.txt" "co2historicaldata_glob.txt" "co2monthlycyc.txt")
+++ WFLOW_LAUNCH_SCRIPT_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/launch_FV3SAR_wflow.sh
+++ WFLOW_LAUNCH_LOG_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/log.launch_FV3SAR_wflow
+++ CRONTAB_LINE='*/03 * * * * cd /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc && ./launch_FV3SAR_wflow.sh >> ./log.launch_FV3SAR_wflow 2>&1'
+++ HOMErrfs=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow
+++ USHDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush
+++ SCRIPTSDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts
+++ JOBSDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs
+++ SORCDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc
+++ PARMDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/parm
+++ MODULES_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/modulefiles
+++ EXECDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/exec
+++ FIXrrfs=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix
+++ FIXam=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am
+++ FIXsar=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ FIXgsm=/scratch1/NCEPDEV/global/glopara/fix/fix_am
+++ FIXupp=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_upp
+++ FIXgsd=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_gsd
+++ COMROOT=/scratch2/NCEPDEV/stmp3//com
+++ TEMPLATE_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates
+++ UFS_WTHR_MDL_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/ufs-weather-model
+++ UFS_UTILS_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/UFS_UTILS_develop
+++ CHGRES_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/UFS_UTILS_develop
+++ SFC_CLIMO_INPUT_DIR=/scratch1/NCEPDEV/da/George.Gayno/ufs_utils.git/climo_fields_netcdf
+++ EXPTDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc
+++ LOGDIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/log
+++ GRID_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ OROG_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ SFC_CLIMO_DIR=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus
+++ GLOBAL_VAR_DEFNS_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/var_defns.sh
+++ DATA_TABLE_TMPL_FN=data_table
+++ DIAG_TABLE_TMPL_FN=diag_table
+++ FIELD_TABLE_TMPL_FN=field_table
+++ FV3_NML_TMPL_FN=input.nml
+++ MODEL_CONFIG_TMPL_FN=model_configure
+++ NEMS_CONFIG_TMPL_FN=nems.configure
+++ DATA_TABLE_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/data_table
+++ DIAG_TABLE_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/diag_table
+++ FIELD_TABLE_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/field_table
+++ FV3_NML_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/input.nml
+++ MODEL_CONFIG_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/model_configure
+++ NEMS_CONFIG_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/nems.configure
+++ CCPP_PHYS_SUITE_FN=
+++ CCPP_PHYS_SUITE_IN_CCPP_FP=
+++ CCPP_PHYS_SUITE_FP=
+++ DATA_TABLE_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/data_table
+++ FIELD_TABLE_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/field_table
+++ FV3_NML_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/input.nml
+++ NEMS_CONFIG_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/nems.configure
+++ WRTCMP_PARAMS_TMPL_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/wrtcmp_regional_latlon
+++ MAKE_GRID_TN=make_grid
+++ MAKE_OROG_TN=make_orog
+++ MAKE_SFC_CLIMO_TN=make_sfc_climo
+++ GET_EXTRN_ICS_TN=get_extrn_ics
+++ GET_EXTRN_LBCS_TN=get_extrn_lbcs
+++ MAKE_ICS_TN=make_ics
+++ MAKE_LBCS_TN=make_lbcs
+++ RUN_FCST_TN=run_fcst
+++ RUN_POST_TN=run_post
+++ GTYPE=regional
+++ TILE_RGNL=7
+++ NH0=0
+++ NH3=3
+++ NH4=4
+++ LON_CTR=-97.5
+++ LAT_CTR=38.5
+++ NX=1920
+++ NY=1296
+++ NHW=6
+++ STRETCH_FAC=1.5
+++ RES_IN_FIXSAR_FILENAMES=768
+++ CRES=C768
+++ ISTART_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=-3
+++ IEND_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=1540
+++ JSTART_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=-3
+++ JEND_OF_RGNL_DOM_WITH_WIDE_HALO_ON_T6SG=1540
+++ NUM_FIXam_FILES=34
+++ EXTRN_MDL_FILES_SYSBASEDIR_ICS=/scratch1/NCEPDEV/rstprod/com/gfs/prod
+++ EXTRN_MDL_FILES_SYSBASEDIR_LBCS=/scratch1/NCEPDEV/rstprod/com/gfs/prod
+++ EXTRN_MDL_LBCS_OFFSET_HRS=0
+++ set -xu
+++ unset default_array
+++ default_array=(0 3 6)
+++ echo 'thinkdeb 251 before ' ' Not intialized'
+thinkdeb 251 before   Not intialized
+++ LBC_UPDATE_FCST_HRS=(${LBC_UPDATE_FCST_HRS[@]:-"${default_array[@]}" })
+++ echo 'thinkdeb251 LBC?? is 0'
+thinkdeb251 LBC?? is 0
+++ num_fhrs=3
+++ echo 'thinkdeb250 1 num_fhrs = ' 3
+thinkdeb250 1 num_fhrs =  3
+++ NCORES_PER_NODE=24
+++ PE_MEMBER01=1404
+++ export NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
+++ NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
+++ export UTIL=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/regional_workflow/util/ush/
+++ UTIL=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/regional_workflow/util/ush/
+++ HOMErrfs=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow
+++ export PARMfv3=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/parm
+++ PARMfv3=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/parm
+++ export fixgsi=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/dev_GSI_fix
+++ fixgsi=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/dev_GSI_fix
+++ export fixcrtm=/scratch1/NCEPDEV/da/Michael.Lueken/CRTM_REL-2.2.3/crtm_v2.2.3/fix_update
+++ fixcrtm=/scratch1/NCEPDEV/da/Michael.Lueken/CRTM_REL-2.2.3/crtm_v2.2.3/fix_update
+++ export COMINrap=/scratch1/NCEPDEV/rstprod/com/rap/prod
+++ COMINrap=/scratch1/NCEPDEV/rstprod/com/rap/prod
+++ export COMINrap_user=/scratch2/NCEPDEV/stmp1/Ting.Lei/dr-obs
+++ COMINrap_user=/scratch2/NCEPDEV/stmp1/Ting.Lei/dr-obs
+++ export GESROOT_HOLD=/scratch2/NCEPDEV/stmp3/Ting.Lei/nwges/fv3cam.hold
+++ GESROOT_HOLD=/scratch2/NCEPDEV/stmp3/Ting.Lei/nwges/fv3cam.hold
+++ export gsiexec=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-CAM_new/dr-add_ensemble_dualv1mix1/ProdGSI/build/bin/gsi.x
+++ gsiexec=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-CAM_new/dr-add_ensemble_dualv1mix1/ProdGSI/build/bin/gsi.x
+++ '[' FV3GFS = FV3GFS ']'
+++ echo 'thinkdeb251 tmmark is ' tm01
+thinkdeb251 tmmark is  tm01
+++ '[' tm01 = tm12 ']'
+++ '[' tm01 = tm00 ']'
+++ offset=06
++++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate -06 2020041700
+++ cdate_FV3SAR=2020041618
++++ echo tm01
++++ cut -c 3-4
+++ offset2=01
+++ echo 'thinkdeb here'
+thinkdeb here
+++ LBC_UPDATE_FCST_HRS=(0 1)
+++ export LBC_UPDATE_FCST_HRS
+++ num_fhrs=2
+++ (( i=0 ))
+++ (( i<=1 ))
+++ LBC_UPDATE_FCST_HRS[$i]=5
+++ (( i++  ))
+++ (( i<=1 ))
+++ LBC_UPDATE_FCST_HRS[$i]=6
+++ (( i++  ))
+++ (( i<=1 ))
+++ offset=0
++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ source_util_funcs
++++ readlink -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ local scrfunc_fp=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
++++ basename /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ local scrfunc_fn=source_util_funcs.sh
++++ dirname /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/source_util_funcs.sh
+++ local scrfunc_dir=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush
+++ local func_name=source_util_funcs
+++ local bashutils_dir=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/save_restore_shell_opts.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/print_msg.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/set_bash_param.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/set_file_param.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/count_files.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/check_for_preexist_dir.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/filesys_cmds_vrfy.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/is_element_of.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/get_elem_inds.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/is_array.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/interpol_to_arbit_CRES.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/check_var_valid_value.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/print_input_args.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/process_args.sh
+++ . /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/bash_utils/get_manage_externals_config_property.sh
+++ readlink -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts/dev-exregional_run_fcst.sh
++ scrfunc_fp=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts/dev-exregional_run_fcst.sh
+++ basename /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts/dev-exregional_run_fcst.sh
++ scrfunc_fn=dev-exregional_run_fcst.sh
+++ dirname /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts/dev-exregional_run_fcst.sh
++ scrfunc_dir=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts
++ print_info_msg '
+========================================================================
+Entering script:  "dev-exregional_run_fcst.sh"
+In directory:     "/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts"
+
+This is the ex-script for the task that runs a forecast with FV3 for the
+specified cycle.
+========================================================================'
+
+========================================================================
+Entering script:  "dev-exregional_run_fcst.sh"
+In directory:     "/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts"
+
+This is the ex-script for the task that runs a forecast with FV3 for the
+specified cycle.
+========================================================================
++ valid_args=("CYCLE_DIR")
++ process_args valid_args CYCLE_DIR=/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700
++ print_input_args valid_args
+
+The arguments to the script in file
+
+  "/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts/dev-exregional_run_fcst.sh"
+
+have been set as follows:
+
+  declare -x CYCLE_DIR="/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700"
++ case $MACHINE in
++ ulimit -s unlimited
++ ulimit -a
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 381113
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) 94208000
+open files                      (-n) 131072
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 381113
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
++ APRUN='srun --label '
++ LD_LIBRARY_PATH=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/ufs-weather-model/FV3/ccpp/lib:/scratch2/NCEPDEV/nwprod/NCEPLIBS/src/netcdf_parallel/lib:/apps/intel/compilers_and_libraries_2018/linux/mpi/intel64/lib::/apps/slurm/default/lib:/apps/intel/parallel_studio_xe_2018.4.057/compilers_and_libraries_2018/linux/compiler/lib/intel64:/apps/intel/parallel_studio_xe_2018.4.057/compilers_and_libraries_2018/linux/ipp/lib/intel64:/apps/intel/parallel_studio_xe_2018.4.057/compilers_and_libraries_2018/linux/compiler/lib/intel64_lin:/apps/intel/parallel_studio_xe_2018.4.057/compilers_and_libraries_2018/linux/mkl/lib/intel64_lin:/apps/intel/parallel_studio_xe_2018.4.057/compilers_and_libraries_2018/linux/tbb/lib/intel64/gcc4.7:/apps/intel/parallel_studio_xe_2018.4.057/debugger_2018/libipt/intel64/lib:/apps/intel/parallel_studio_xe_2018.4.057/compilers_and_libraries_2018/linux/daal/lib/intel64_lin:/apps/intel/parallel_studio_xe_2018.4.057/compilers_and_libraries_2018/linux/daal/../tbb/lib/intel64_lin/gcc4.4
++ print_info_msg TRUE '
+Creating links in the INPUT subdirectory of the current cycle'\''s run di-
+rectory to the grid and (filtered) orography files ...'
+
+Creating links in the INPUT subdirectory of the current cycle's run di-
+rectory to the grid and (filtered) orography files ...
++ cd_vrfy /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/INPUT
++ relative_or_null=
++ '[' FALSE = TRUE ']'
++ target=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_mosaic.nc
++ symlink=grid_spec.nc
++ '[' -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_mosaic.nc ']'
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_mosaic.nc grid_spec.nc
++ target=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_grid.tile7.halo3.nc
++ '[' FALSE = TRUE ']'
++ symlink=C768_grid.tile7.nc
++ '[' -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_grid.tile7.halo3.nc ']'
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_grid.tile7.halo3.nc C768_grid.tile7.nc
++ target=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_grid.tile7.halo4.nc
++ symlink=grid.tile7.halo4.nc
++ '[' -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_grid.tile7.halo4.nc ']'
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_grid.tile7.halo4.nc grid.tile7.halo4.nc
++ relative_or_null=
++ '[' FALSE = TRUE ']'
++ target=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_oro_data.tile7.halo0.nc
++ symlink=oro_data.nc
++ '[' -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_oro_data.tile7.halo0.nc ']'
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_oro_data.tile7.halo0.nc oro_data.nc
++ target=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_oro_data.tile7.halo4.nc
++ symlink=oro_data.tile7.halo4.nc
++ '[' -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_oro_data.tile7.halo4.nc ']'
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_oro_data.tile7.halo4.nc oro_data.tile7.halo4.nc
++ '[' tm01 = tm12 ']'
++ '[' tm01 = tm00 ']'
++ export FCST_LEN_HRS=1
++ FCST_LEN_HRS=1
++ export LBC_UPDATE_INTVL_HRS=1
++ LBC_UPDATE_INTVL_HRS=1
++ '[' tm01 = tm12 ']'
++ FcstInDir=/scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm01
++ '[' tm01 = tm00 ']'
++ cd_vrfy /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00
++ cp_vrfy /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm01/fv3_grid_spec.nc /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm01/fv_core.res.nc /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm01/fv_core.res.tile1.nc /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm01/fv_tracer.res.tile1.nc /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm01/gfs_bndy.tile7.000.nc /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm01/gfs_bndy.tile7.001.nc /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm01/gfs_ctrl.nc /scratch2/NCEPDEV/stmp3//com/FV3SAR_exp1/experiment_name_XX.20200417/00/anl.tm01/sfc_data.nc INPUT
+++ wc -l
+++ ls -l INPUT/gfs_bndy.tile7.000.nc INPUT/gfs_bndy.tile7.001.nc
++ numbndy=2
++ let numbndy_check=1/1+1
++ '[' tm01 = tm00 ']'
++ '[' tm01 = tm12 ']'
++ '[' 2 -lt 2 ']'
++ print_info_msg TRUE '
+Creating links with names that FV3 looks for in the INPUT subdirectory
+of the current cycle'\''s run directory (DATA)...'
+
+Creating links with names that FV3 looks for in the INPUT subdirectory
+of the current cycle's run directory (DATA)...
++ cd_vrfy /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/INPUT
++ relative_or_null=
++ '[' tm01 = tm12 ']'
++ cd_vrfy /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00
++ print_info_msg TRUE '
+Creating links in the current cycle'\''s run directory to static (fix) 
+files in the FIXam directory...'
+
+Creating links in the current cycle's run directory to static (fix) 
+files in the FIXam directory...
++ '[' nco = nco ']'
++ (( i=0 ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/CFSR.SEAICE.1982.2012.monthly.clim.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/CFSR.SEAICE.1982.2012.monthly.clim.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/RTGSST.1982.2012.monthly.clim.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/RTGSST.1982.2012.monthly.clim.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/seaice_newland.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/seaice_newland.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_climaeropac_global.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/aerosol.dat
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_albedo4.1x1.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_albedo4.1x1.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_glacier.2x2.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_glacier.2x2.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_h2o_pltc.f77 /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_h2oprdlos.f77
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_maxice.2x2.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_maxice.2x2.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_mxsnoalb.uariz.t126.384.190.rg.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_mxsnoalb.uariz.t126.384.190.rg.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/ozprdlos_2015_new_sbuvO3_tclm15_nuchem.f77 /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_o3prdlos.f77
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_shdmax.0.144x0.144.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_shdmax.0.144x0.144.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_shdmin.0.144x0.144.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_shdmin.0.144x0.144.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_slope.1x1.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_slope.1x1.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_snoclim.1.875.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_snoclim.1.875.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_snowfree_albedo.bosu.t126.384.190.rg.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_snowfree_albedo.bosu.t126.384.190.rg.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_soilmgldas.t126.384.190.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_soilmgldas.t126.384.190.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_soiltype.statsgo.t126.384.190.rg.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_soiltype.statsgo.t126.384.190.rg.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_tg3clim.2.6x1.5.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_tg3clim.2.6x1.5.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_vegfrac.0.144.decpercent.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_vegfrac.0.144.decpercent.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_vegtype.igbp.t126.384.190.rg.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_vegtype.igbp.t126.384.190.rg.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_zorclim.1x1.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_zorclim.1x1.grb
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_sfc_emissivity_idx.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/sfc_emissivity_idx.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_solarconstant_noaa_an.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/solarconstant_noaa_an.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/fix_co2_proj/global_co2historicaldata_2010.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_2010.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/fix_co2_proj/global_co2historicaldata_2011.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_2011.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/fix_co2_proj/global_co2historicaldata_2012.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_2012.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/fix_co2_proj/global_co2historicaldata_2013.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_2013.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/fix_co2_proj/global_co2historicaldata_2014.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_2014.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/fix_co2_proj/global_co2historicaldata_2015.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_2015.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/fix_co2_proj/global_co2historicaldata_2016.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_2016.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/fix_co2_proj/global_co2historicaldata_2017.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_2017.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/fix_co2_proj/global_co2historicaldata_2018.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_2018.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_co2historicaldata_glob.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2historicaldata_glob.txt
++ (( i++  ))
++ (( i<34 ))
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/co2monthlycyc.txt /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/co2monthlycyc.txt
++ (( i++  ))
++ (( i<34 ))
++ cd /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_solarconstant_noaa_an.txt solarconstant_noaa_an.txt
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_solarconstant_noaa_an.txt' and 'solarconstant_noaa_an.txt' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/ozprdlos_2015_new_sbuvO3_tclm15_nuchem.f77 global_o3prdlos.f77
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/ozprdlos_2015_new_sbuvO3_tclm15_nuchem.f77' and 'global_o3prdlos.f77' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_h2o_pltc.f77 global_h2oprdlos.f77
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_h2o_pltc.f77' and 'global_h2oprdlos.f77' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_sfc_emissivity_idx.txt sfc_emissivity_idx.txt
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_sfc_emissivity_idx.txt' and 'sfc_emissivity_idx.txt' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_co2historicaldata_glob.txt co2historicaldata_glob.txt
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_co2historicaldata_glob.txt' and 'co2historicaldata_glob.txt' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/co2monthlycyc.txt co2monthlycyc.txt
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/co2monthlycyc.txt' and 'co2monthlycyc.txt' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_climaeropac_global.txt aerosol.dat
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_climaeropac_global.txt' and 'aerosol.dat' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_glacier.2x2.grb .
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_glacier.2x2.grb' and './global_glacier.2x2.grb' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_maxice.2x2.grb .
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_maxice.2x2.grb' and './global_maxice.2x2.grb' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/RTGSST.1982.2012.monthly.clim.grb .
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/RTGSST.1982.2012.monthly.clim.grb' and './RTGSST.1982.2012.monthly.clim.grb' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_snoclim.1.875.grb .
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_snoclim.1.875.grb' and './global_snoclim.1.875.grb' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/CFSR.SEAICE.1982.2012.monthly.clim.grb .
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/CFSR.SEAICE.1982.2012.monthly.clim.grb' and './CFSR.SEAICE.1982.2012.monthly.clim.grb' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_soilmgldas.t1534.3072.1536.grb .
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/seaice_newland.grb .
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/seaice_newland.grb' and './seaice_newland.grb' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_shdmin.0.144x0.144.grb .
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_shdmin.0.144x0.144.grb' and './global_shdmin.0.144x0.144.grb' are the same file
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_shdmax.0.144x0.144.grb .
+cp: '/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_shdmax.0.144x0.144.grb' and './global_shdmax.0.144x0.144.grb' are the same file
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768.facsf.tile1.nc /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/C768.facsf.tile1.nc
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768.maximum_snow_albedo.tile1.nc /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/C768.maximum_snow_albedo.tile1.nc
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768.slope_type.tile1.nc /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/C768.slope_type.tile1.nc
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768.snowfree_albedo.tile1.nc /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/C768.snowfree_albedo.tile1.nc
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768.soil_type.tile1.nc /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/C768.soil_type.tile1.nc
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768.substrate_temperature.tile1.nc /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/C768.substrate_temperature.tile1.nc
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768.vegetation_greenness.tile1.nc /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/C768.vegetation_greenness.tile1.nc
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768.vegetation_type.tile1.nc /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/C768.vegetation_type.tile1.nc
++ rm_vrfy /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_soilmgldas.t126.384.190.grb
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_am/global_soilmgldas.t1534.3072.1536.grb /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/global_soilmgldas.t1534.3072.1536.grb
++ ntiles=1
++ tile=7
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_grid.tile7.halo3.nc INPUT/.
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_grid.tile7.halo4.nc INPUT/.
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_oro_data.tile7.halo0.nc INPUT/.
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_oro_data.tile7.halo4.nc INPUT/.
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/fix/fix_sar/conus/C768_mosaic.nc INPUT/.
++ cd INPUT
++ ln -sf C768_mosaic.nc grid_spec.nc
++ ln -sf C768_grid.tile7.halo3.nc C768_grid.tile1.nc
++ ln -sf C768_grid.tile7.halo4.nc grid.tile1.halo4.nc
++ ln -sf C768_oro_data.tile7.halo0.nc oro_data.nc
++ ln -sf C768_oro_data.tile7.halo4.nc oro_data.tile7.halo4.nc
++ '[' tm01 = tm12 ']'
++ cd_vrfy /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00
++ rm_vrfy -f time_stamp.out
++ '[' tm01 = tm12 ']'
++ export FV3_NML_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/input.nml_sar_da_hourly
++ FV3_NML_FP=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/input.nml_sar_da_hourly
++ print_info_msg TRUE '
+Creating links in the current cycle'\''s run directory to cycle-independent
+model input files in the main experiment directory...'
+
+Creating links in the current cycle's run directory to cycle-independent
+model input files in the main experiment directory...
++ ln_vrfy -sf -t /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00 /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/data_table
++ ln_vrfy -sf -t /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00 /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/field_table
++ ln_vrfy -sf /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/input.nml_sar_da_hourly /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/input.nml
++ ln_vrfy -sf -t /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00 /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/expt_dirs/test4tl_emc/nems.configure
++ '[' FALSE = TRUE ']'
++ print_info_msg TRUE '
+Copying cycle-dependent model input files from the templates directory 
+to the current cycle'\''s run directory...'
+
+Copying cycle-dependent model input files from the templates directory 
+to the current cycle's run directory...
++ print_info_msg TRUE '
+  Copying the template diagnostics table file to the current cycle'\''s run
+  directory...'
+
+  Copying the template diagnostics table file to the current cycle's run
+  directory...
++ diag_table_fp=/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table
++ cp_vrfy /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/diag_table /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table
++ print_info_msg TRUE '
+  Copying the template model configuration file to the current cycle'\''s
+  run directory...'
+
+  Copying the template model configuration file to the current cycle's
+  run directory...
++ model_config_fp=/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure
++ cp_vrfy /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/model_configure /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure
++ YYYY=2020
++ MM=04
++ DD=16
++ HH=23
++ YYYYMMDD=20200416
++ print_info_msg TRUE '
+Setting parameters in file:
+  diag_table_fp = "/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table"'
+
+Setting parameters in file:
+  diag_table_fp = "/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table"
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table CRES C768
+Setting parameter "CRES" in file "diag_table" to "C768" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table YYYY 2020
+Setting parameter "YYYY" in file "diag_table" to "2020" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table MM 04
+Setting parameter "MM" in file "diag_table" to "04" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table DD 16
+Setting parameter "DD" in file "diag_table" to "16" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table HH 23
+Setting parameter "HH" in file "diag_table" to "23" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/diag_table YYYYMMDD 20200416
+Setting parameter "YYYYMMDD" in file "diag_table" to "20200416" ...
++ print_info_msg TRUE '
+Setting parameters in file:
+  model_config_fp = "/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure"'
+
+Setting parameters in file:
+  model_config_fp = "/scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure"
++ dot_quilting_dot=.true.
++ dot_print_esmf_dot=.true.
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure PE_MEMBER01 1404
+Setting parameter "PE_MEMBER01" in file "model_configure" to "1404" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure dt_atmos 18
+Setting parameter "dt_atmos" in file "model_configure" to "18" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure start_year 2020
+Setting parameter "start_year" in file "model_configure" to "2020" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure start_month 04
+Setting parameter "start_month" in file "model_configure" to "04" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure start_day 16
+Setting parameter "start_day" in file "model_configure" to "16" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure start_hour 23
+Setting parameter "start_hour" in file "model_configure" to "23" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure nhours_fcst 1
+Setting parameter "nhours_fcst" in file "model_configure" to "1" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure ncores_per_node 24
+Setting parameter "ncores_per_node" in file "model_configure" to "24" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure quilting .true.
+Setting parameter "quilting" in file "model_configure" to ".true." ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure print_esmf .true.
+Setting parameter "print_esmf" in file "model_configure" to ".true." ...
++ '[' TRUE = TRUE ']'
++ cat /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/ush/templates/wrtcmp_regional_latlon
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure write_groups 2
+Setting parameter "write_groups" in file "model_configure" to "2" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure write_tasks_per_group 54
+Setting parameter "write_tasks_per_group" in file "model_configure" to "54" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure output_grid '\'\''rotated_latlon\'\'''
+Setting parameter "output_grid" in file "model_configure" to "\'rotated_latlon\'" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure cen_lon -97.5
+Setting parameter "cen_lon" in file "model_configure" to "-97.5" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure cen_lat 38.5
+Setting parameter "cen_lat" in file "model_configure" to "38.5" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure lon1 -25.0
+Setting parameter "lon1" in file "model_configure" to "-25.0" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure lat1 -15.0
+Setting parameter "lat1" in file "model_configure" to "-15.0" ...
++ '[' rotated_latlon = rotated_latlon ']'
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure lon2 25.0
+Setting parameter "lon2" in file "model_configure" to "25.0" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure lat2 15.0
+Setting parameter "lat2" in file "model_configure" to "15.0" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure dlon 0.02
+Setting parameter "dlon" in file "model_configure" to "0.02" ...
++ set_file_param /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/model_configure dlat 0.02
+Setting parameter "dlat" in file "model_configure" to "0.02" ...
++ '[' FALSE = TRUE ']'
++ FV3SAR_EXEC=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/sorc/ufs-weather-model/tests/fv3_32bit.exe
++ FV3SAR_EXEC=/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/unified-regional_workflow/expt_dirs/test4emc/Ratko-fv3-gfs.x
++ '[' -f /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/unified-regional_workflow/expt_dirs/test4emc/Ratko-fv3-gfs.x ']'
++ print_info_msg TRUE '
+Copying the FV3SAR executable to the run directory...'
+
+Copying the FV3SAR executable to the run directory...
++ '[' tm01 = tm12 ']'
++ cp /scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-eric/regional_workflow/exec//regional_forecast.x /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/fv3_gfs.x
++ export KMP_AFFINITY=scatter
++ KMP_AFFINITY=scatter
++ export OMP_NUM_THREADS=1
++ OMP_NUM_THREADS=1
++ export OMP_STACKSIZE=1024m
++ OMP_STACKSIZE=1024m
++ srun --label ./fv3_gfs.x
+ 743: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 746: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 757: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 787: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 753: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 750: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 794: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 790: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 756: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 758: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 744: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 798: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 745: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 783: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 752: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 793: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 789: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 741: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 795: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 785: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 791: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 792: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 742: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 754: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 749: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 748: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 747: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 751: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 759: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 755: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   4: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  15: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 740: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   5: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  11: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  19: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  14: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 782: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  16: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  10: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 788: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   6: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 781: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   8: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  17: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 797: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 786: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   7: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   0: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 799: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   9: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 796: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   3: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 784: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  12: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+ 780: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  13: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   2: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+  18: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+   1: /scratch2/NCEPDEV/stmp3/Ting.Lei/tmpnwprd/conus_2020041700/2020041700/forecast_tm01_00/./fv3_gfs.x: error while loading shared libraries: libnetcdff.so.6: cannot open shared object file: No such file or directory
+srun: error: h1c45: tasks 0-19: Exited with exit code 127
+srun: Terminating job step 6625780.0
+srun: error: h22c04: tasks 740-759: Exited with exit code 127
+srun: error: h22c17: tasks 780-799: Exited with exit code 127
+srun: error: h33m43: tasks 1140-1159: Terminated
+srun: error: h35m12: tasks 1260-1279: Terminated
+srun: error: h16c32: tasks 580-599: Terminated
+srun: error: h16c06: tasks 560-579: Terminated
+srun: error: h8c42: tasks 420-439: Terminated
+srun: error: h16c50: tasks 600-619: Terminated
+srun: error: h24c17: tasks 920-939: Terminated
+srun: error: h22c51: tasks 840-859: Terminated
+srun: error: h25c15: tasks 980-999: Terminated
+srun: error: h22c18: tasks 800-819: Terminated
+srun: error: h22c49: tasks 820-839: Terminated
+srun: error: h25c14: tasks 960-979: Terminated
+srun: error: h12c15: tasks 480-499: Terminated
+srun: error: h15c16: tasks 520-539: Terminated
+srun: error: h22c14: tasks 760-779: Terminated
+srun: error: h23c01: tasks 860-879: Terminated
+srun: error: h21c53: tasks 700-719: Terminated
+srun: error: h6c41: tasks 380-399: Terminated
+srun: error: h17c42: tasks 620-639: Terminated
+srun: error: h33m15: tasks 1020-1039: Terminated
+srun: error: h34m41: tasks 1180-1199: Terminated
+srun: error: h25c10: tasks 940-959: Terminated
+srun: error: h13c42: tasks 500-519: Terminated
+srun: error: h36m28: tasks 1400-1419: Terminated
+srun: error: h22c01: tasks 720-739: Terminated
+srun: error: h35m10: tasks 1240-1259: Terminated
+srun: error: h5c49: tasks 300-319: Terminated
+srun: error: h20c28: tasks 660-679: Terminated
+srun: error: h35m20: tasks 1280-1299: Terminated
+srun: error: h33m18: tasks 1040-1059: Terminated
+srun: error: h5c35: tasks 280-299: Terminated
+srun: error: h23c18: tasks 880-899: Terminated
+srun: error: h4c42: tasks 180-199: Terminated
+srun: error: h33m34: tasks 1100-1119: Terminated
+srun: error: h33m33: tasks 1080-1099: Terminated
+srun: error: h5c53: tasks 320-339: Terminated
+srun: error: h35m49: tasks 1320-1339: Terminated
+srun: error: h6c30: tasks 360-379: Terminated
+srun: error: h32m43: tasks 1000-1019: Terminated
+srun: error: h6c50: tasks 400-419: Terminated
+srun: error: h33m22: tasks 1060-1079: Terminated
+srun: error: h20c37: tasks 680-699: Terminated
+srun: error: h12c04: tasks 460-479: Terminated
+srun: error: h4c08: tasks 120-139: Terminated
+srun: error: h5c24: tasks 240-259: Terminated
+srun: error: h5c14: tasks 200-219: Terminated
+srun: error: h36m12: tasks 1360-1379: Terminated
+srun: error: h4c21: tasks 140-159: Terminated
+srun: error: h2c01: tasks 20-39: Terminated
+srun: error: h2c24: tasks 40-59: Terminated
+srun: error: h5c28: tasks 260-279: Terminated
+srun: error: h2c51: tasks 100-119: Terminated
+srun: error: h35m43: tasks 1300-1319: Terminated
+srun: error: h2c46: tasks 80-99: Terminated
+srun: error: h2c45: tasks 60-79: Terminated
+srun: error: h5c22: tasks 220-239: Terminated
+srun: error: h36m15: tasks 1380-1399: Terminated
+srun: error: h4c28: tasks 160-179: Terminated
+srun: error: h34m49: tasks 1200-1219: Terminated
+srun: error: h17c52: tasks 640-659: Terminated
+srun: error: h9c32: tasks 440-459: Terminated
+srun: error: h33m37: tasks 1120-1139: Terminated
+srun: error: h23c33: tasks 900-919: Terminated
+srun: error: h36m03: tasks 1340-1359: Terminated
+srun: error: h35m02: tasks 1220-1239: Terminated
+srun: error: h33m48: tasks 1160-1179: Terminated
+srun: error: h15c33: tasks 540-559: Terminated
+srun: error: h6c01: tasks 340-359: Terminated
+srun: Force Terminated job step 6625780.0
++ print_err_msg_exit 'Call to executable to run FV3SAR forecast returned with nonzero exit 
+code.'
+
+ERROR:
+  From script:  "dev-exregional_run_fcst.sh"
+  Full path to script:  "/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/scripts/dev-exregional_run_fcst.sh"
+Call to executable to run FV3SAR forecast returned with nonzero exit 
+code.
+Exiting with nonzero status.
++ print_err_msg_exit 'Call to ex-script corresponding to J-job "dev-JREGIONAL_RUN_FCST" failed.'
+
+ERROR:
+  From script:  "dev-JREGIONAL_RUN_FCST"
+  Full path to script:  "/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-regional-workflow/tl-fork_unified-workflow/regional_workflow/jobs/dev-JREGIONAL_RUN_FCST"
+Call to ex-script corresponding to J-job "dev-JREGIONAL_RUN_FCST" failed.
+Exiting with nonzero status.
+_______________________________________________________________
+Start Epilog v19.07.23 on node h1c45 for job 6625780 :: Fri Apr 17 18:50:02 UTC 2020
+Job 6625780 (not serial) finished for user Ting.Lei in partition hera with exit code 1:0
+_______________________________________________________________
+End Epilogue v19.07.23 Fri Apr 17 18:50:02 UTC 2020

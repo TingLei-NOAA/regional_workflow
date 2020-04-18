@@ -28,6 +28,7 @@ function get_extrn_mdl_file_dir_info() {
 #-----------------------------------------------------------------------
 #
   { save_shell_opts; set -u +x; } > /dev/null 2>&1
+set -xu
 #
 #-----------------------------------------------------------------------
 #
@@ -70,6 +71,7 @@ function get_extrn_mdl_file_dir_info() {
     "varname_extrn_mdl_arcvrel_dir" \
   )
   process_args valid_args "$@"
+set -xu
 #
 #-----------------------------------------------------------------------
 #
@@ -192,13 +194,17 @@ where the arguments are defined as follows:
 # Step through the arguments list and set each to a local variable.
 #
 #-----------------------------------------------------------------------
-#
+  echo "thinkdeb240 all " ${@}
   local iarg="0"
   iarg=$(( iarg+1 ))
+  echo "think250 iarg is "iarg
   local extrn_mdl_name="${!iarg}"
+  echo "think25 $ iarg is "${!iarg}
+  echo "thinkdeb250 2 extrn?? is " $extrn_mdl_name
   iarg=$(( iarg+1 ))
   local anl_or_fcst="${!iarg}"
   iarg=$(( iarg+1 ))
+  echo 'thinkdeb250 cdate '$iarg 
   local cdate_FV3SAR="${!iarg}"
   iarg=$(( iarg+1 ))
   local time_offset_hrs="${!iarg}"
@@ -268,6 +274,7 @@ fi
 #
 #-----------------------------------------------------------------------
 #
+tothink
   yyyy=${cdate_FV3SAR:0:4}
   mm=${cdate_FV3SAR:4:2}
   dd=${cdate_FV3SAR:6:2}
@@ -307,9 +314,9 @@ fi
   lbc_update_fhrs=( "" )
 
   if [ "${anl_or_fcst}" = "FCST" ]; then
-
+    echo "think250 LBC_UPDATE_FCST_HRS[@] is " ${LBC_UPDATE_FCST_HRS[@]} 
     lbc_update_fhrs=( "${LBC_UPDATE_FCST_HRS[@]}" )
-#
+    echo "thinkdeb250 lbc_update_fhrs " ${lbc_update_fhrs[@]}
 # Add the temporal offset specified in time_offset_hrs (assumed to be in 
 # units of hours) to the the array of LBC update forecast hours to make
 # up for shifting the starting hour back in time.  After this addition,
@@ -322,6 +329,8 @@ fi
     done
 
   fi
+    echo "thinkdeb offset is " time_offset_hrs
+    echo "thinkdeb250 2 adjusted  lbc_update_fhrs " ${lbc_update_fhrs[@]}
 #
 #-----------------------------------------------------------------------
 #
@@ -388,10 +397,16 @@ fi
 
 #        fns=( "atm" "sfc" "nst" )
         fns=( "atm" "sfc" )
+#cltorg        prefix="gfs.t${hh}z."
+      if [ $tmmark = tm00 ]; then
         prefix="gfs.t${hh}z."
+      else
+        prefix="gdas.t${hh}z."
+      fi
         fns=( "${fns[@]/#/$prefix}" )
         suffix="anl.nemsio"
         fns=( "${fns[@]/%/$suffix}" )
+        echo "thinkdeb fns is "${fns[@]}
 
       elif [ "${fv3gfs_file_fmt}" = "grib2" ]; then
 
@@ -446,11 +461,18 @@ bination of external model (extrn_mdl_name) and analysis or forecast
 
     "FV3GFS")
       if [ "${fv3gfs_file_fmt}" = "nemsio" ]; then
+        echo "thinkdeb2501  3 lbc_update_fhr " ${lbc_update_fhrs[@]}
         fcst_hhh=( $( printf "%03d " "${lbc_update_fhrs[@]}" ) )
+#cltorg        prefix="gfs.t${hh}z.atmf"
+      if [ $tmmark = tm00 ]; then
         prefix="gfs.t${hh}z.atmf"
+      else
+        prefix="gdas.t${hh}z.atmf"
+      fi
         fns=( "${fcst_hhh[@]/#/$prefix}" )
         suffix=".nemsio"
         fns=( "${fns[@]/%/$suffix}" )
+        echo "thinkdeb250 4 fns "${fns[@]}
       elif [ "${fv3gfs_file_fmt}" = "grib2" ]; then
         fcst_hhh=( $( printf "%03d " "${lbc_update_fhrs[@]}" ) )
         prefix="gfs.t${hh}z.pgrb2.0p25.f"
@@ -548,7 +570,12 @@ has not been specified for this external model and machine combination:
       sysdir="$sysbasedir/gfs.${yyyymmdd}/${hh}"
       ;;
     "HERA")
+#cltorg      sysdir="$sysbasedir/gfs.${yyyymmdd}/${hh}"
+     if [ $tmmark = tm00 ]; then
       sysdir="$sysbasedir/gfs.${yyyymmdd}/${hh}"
+     else
+      sysdir="$sysbasedir/gdas.${yyyymmdd}/${hh}"
+     fi
       ;;
     "JET")
       sysdir="$sysbasedir/${yyyymmdd}"
@@ -783,6 +810,8 @@ Archive file information has not been specified for this external model:
   arcv_fns_str="( "$( printf "\"%s\" " "${arcv_fns[@]}" )")"
   arcv_fps_str="( "$( printf "\"%s\" " "${arcv_fps[@]}" )")"
 
+  set -xu 
+  echo "thinkdeb 255"
   eval ${varname_extrn_mdl_cdate}="${cdate}"
   eval ${varname_extrn_mdl_lbc_update_fhrs}=${lbc_update_fhrs_str}
   eval ${varname_extrn_mdl_fns}=${fns_str}
@@ -791,6 +820,7 @@ Archive file information has not been specified for this external model:
   eval ${varname_extrn_mdl_arcv_fns}=${arcv_fns_str}
   eval ${varname_extrn_mdl_arcv_fps}=${arcv_fps_str}
   eval ${varname_extrn_mdl_arcvrel_dir}="${arcvrel_dir}"
+  echo "thinkdeb 255 end"
 #
 #-----------------------------------------------------------------------
 #

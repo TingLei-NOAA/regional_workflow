@@ -92,9 +92,12 @@ print_input_args valid_args
 #
 #-----------------------------------------------------------------------
 #
+set -xu #clttinnk
+echo "thinkdeb250 EXTRN_MDL_FNS is "${EXTRN_MDL_FNS[@]}
 num_files_to_copy="${#EXTRN_MDL_FNS[@]}"
 prefix="${EXTRN_MDL_SYSDIR}/"
 EXTRN_MDL_FPS=( "${EXTRN_MDL_FNS[@]/#/$prefix}" )
+echo "thinkdeb250 EXTRN_MDL_FPS " ${EXTRN_MDL_FPS[@]}
 
 num_files_found_on_disk="0"
 min_age="5"  # Minimum file age, in minutes.

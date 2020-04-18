@@ -1,0 +1,243 @@
+1,7c1,7
+<  &amip_interp_nml
+<      interp_oi_sst = .true.
+<      use_ncep_sst = .true.
+<      use_ncep_ice = .false.
+<      no_anom_sst = .false.
+<      data_set = 'reynolds_oi',
+<      date_out_of_range = 'climo',
+---
+> &amip_interp_nml
+>        interp_oi_sst = .true.
+>        use_ncep_sst = .true.
+>        use_ncep_ice = .false.
+>        no_anom_sst = .false.
+>        data_set = 'reynolds_oi',
+>        date_out_of_range = 'climo',
+11,15c11,16
+<      blocksize = 27
+<      chksum_debug = .false.
+<      dycore_only = .false.
+<      fdiag = 1
+<      avg_max_length = 3600.
+---
+>        blocksize = 24
+>        chksum_debug = .false.
+>        dycore_only = .false.
+>        fdiag = 1
+>        avg_max_length = 3600.
+>        ccpp_suite = 'FV3_GFS_2017_gfdlmp_regional'
+19c20
+<       prepend_date = .false.
+---
+>        prepend_date = .F.
+30c31
+<        domains_stack_size = 1800200,
+---
+>        domains_stack_size =  1800200,
+35c36
+<   grid_file = 'INPUT/grid_spec.nc'
+---
+>        grid_file = 'INPUT/grid_spec.nc'
+39c40
+<        layout   =24,54 
+---
+>        layout   = 24,54
+45,48c46,49
+<        !grid_type = -1
+<        make_nh = .false.
+<        fv_debug = .T.
+<        range_warn = .T.
+---
+> !       grid_type = -1
+>        make_nh = .T.
+>        fv_debug = .F.
+>        range_warn = .F.
+51,52c52,53
+<        nudge_qv = .false.
+<        tau = 5.
+---
+>        nudge_qv = .F.
+>        tau = 5.0
+66c67
+<        k_split  = 6
+---
+>        k_split  = 2
+69c70
+<        na_init = 0
+---
+>        na_init = 1
+77a79
+>        delt_max = 0.008
+79,80c81,82
+<        do_vort_damp = .true.
+<        external_ic = .false.
+---
+>        do_vort_damp = .T.
+>        external_ic = .T.
+83,84c85,86
+<        nggps_ic = .false.
+<        mountain = .true.
+---
+>        nggps_ic = .T.
+>        mountain = .F.
+87d88
+<        delt_max = 0.008
+99,100c100,101
+<        print_freq = -1
+<        warm_start = .true.
+---
+>        print_freq = 6
+>        warm_start = .F.
+109a111,113
+> !      nord_zs_filter = 4
+>        n_zs_filter = 0
+>        full_zs_filter = .F.
+111c115
+<        bc_update_interval = 1
+---
+>        bc_update_interval = 3
+113,117d116
+< 
+<        full_zs_filter = .false. !unreleased feature
+< 
+<        nord_zs_filter = 4
+<        n_zs_filter = 0 ! safety
+131c130
+<  &external_ic_nml 
+---
+>  &external_ic_nml
+163a163
+>        shal_cnv       = .false.
+167c167,169
+<        hybedmf        = .true.
+---
+>        hybedmf        = .T.
+>        satmedmf       = .F.
+>        lheatstrg      = .F.
+176a179,191
+>        lsm            = 1
+>        iopt_dveg      = 2
+>        iopt_crs       = 1
+>        iopt_btr       = 1
+>        iopt_run       = 1
+>        iopt_sfc       = 1
+>        iopt_frz       = 1
+>        iopt_inf       = 1
+>        iopt_rad       = 1
+>        iopt_alb       = 2
+>        iopt_snf       = 4
+>        iopt_tbot      = 2
+>        iopt_stc       = 1
+177a193,194
+>        oz_phys        = .F.
+>        oz_phys_2015   = .T.
+178a196
+>        cplflx         = .F.
+182,185c200,252
+<        shal_cnv = .false. !Shallow convection
+<        do_deep = .false.
+<        lgfdlmprad   = .true.
+<        effr_in      = .true.
+---
+>        do_deep        = .false.
+>        lgfdlmprad     = .true.
+>        effr_in        = .true.
+>        do_sppt        = .F.
+>        do_shum        = .F.
+>        do_skeb        = .F.
+>        do_sfcperts    = .F.
+> /
+> 
+>   &interpolator_nml
+>        interp_method = 'conserve_great_circle'
+> /
+> 
+> &namsfc
+>        FNALBC2  = "C768.facsf.tileX.nc",
+>        FNALBC   = "C768.snowfree_albedo.tileX.nc",
+>        FNTG3C   = "C768.substrate_temperature.tileX.nc",
+>        FNVEGC   = "C768.vegetation_greenness.tileX.nc",
+>        FNVETC   = "C768.vegetation_type.tileX.nc",
+>        FNSOTC   = "C768.soil_type.tileX.nc",
+>        FNVMNC   = "C768.vegetation_greenness.tileX.nc",
+>        FNVMXC   = "C768.vegetation_greenness.tileX.nc",
+>        FNSLPC   = "C768.slope_type.tileX.nc",
+>        FNABSC   = "C768.maximum_snow_albedo.tileX.nc",
+>        FNGLAC   = "global_glacier.2x2.grb",
+>        FNMXIC   = "global_maxice.2x2.grb",
+>        FNTSFC   = "RTGSST.1982.2012.monthly.clim.grb",
+>        FNSNOC   = "global_snoclim.1.875.grb",
+>        FNZORC   = "igbp"
+>        FNAISC   = "CFSR.SEAICE.1982.2012.monthly.clim.grb",
+>        FNSMCC   = "global_soilmgldas.t1534.3072.1536.grb",
+>        FNMSKH   = "seaice_newland.grb",
+>        FNTSFA   = "",
+>        FNACNA   = "",
+>        FNSNOA   = "",
+>        LDEBUG   =.true.,
+>        FSMCL(2) = 99999
+>        FSMCL(3) = 99999
+>        FSMCL(4) = 99999
+>        FTSFS    = 90
+>        FAISS    = 99999
+>        FSNOL    = 99999
+>        FSICL    = 99999
+>        FTSFL    = 99999,
+>        FAISL    = 99999,
+>        FVETL    = 99999,
+>        FSOTL    = 99999,
+>        FvmnL    = 99999,
+>        FvmxL    = 99999,
+>        FSLPL    = 99999,
+>        FABSL    = 99999,
+>        FSNOS    = 99999,
+>        FSICS    = 99999,
+236,238d302
+<   &interpolator_nml
+<        interp_method = 'conserve_great_circle'
+< /
+240,280d303
+< &namsfc
+<        FNALBC2  = "C768.facsf.tileX.nc",
+<        FNALBC   = "C768.snowfree_albedo.tileX.nc",
+<        FNTG3C   = "C768.substrate_temperature.tileX.nc",
+<        FNVEGC   = "C768.vegetation_greenness.tileX.nc",
+<        FNVETC   = "C768.vegetation_type.tileX.nc",
+<        FNSOTC   = "C768.soil_type.tileX.nc",
+<        FNVMNC   = "C768.vegetation_greenness.tileX.nc",
+<        FNVMXC   = "C768.vegetation_greenness.tileX.nc",
+<        FNSLPC   = "C768.slope_type.tileX.nc",
+<        FNABSC   = "C768.maximum_snow_albedo.tileX.nc",
+<        FNGLAC   = "global_glacier.2x2.grb",
+<        FNMXIC   = "global_maxice.2x2.grb",
+<        FNTSFC   = "RTGSST.1982.2012.monthly.clim.grb",
+<        FNSNOC   = "global_snoclim.1.875.grb",
+<        FNZORC   = "igbp"
+<        FNAISC   = "CFSR.SEAICE.1982.2012.monthly.clim.grb",
+<        FNSMCC   = "global_soilmgldas.t1534.3072.1536.grb",
+<        FNMSKH   = "seaice_newland.grb",
+<        FNTSFA   = "",
+<        FNACNA   = "",
+<        FNSNOA   = "",
+<        LDEBUG   =.true.,
+<        FSMCL(2) = 99999
+<        FSMCL(3) = 99999
+<        FSMCL(4) = 99999
+<        FTSFS    = 90
+<        FAISS    = 99999
+<        FSNOL    = 99999
+<        FSICL    = 99999
+<        FTSFL    = 99999,
+<        FAISL    = 99999,
+<        FVETL    = 99999,
+<        FSOTL    = 99999,
+<        FvmnL    = 99999,
+<        FvmxL    = 99999,
+<        FSLPL    = 99999,
+<        FABSL    = 99999,
+<        FSNOS    = 99999,
+<        FSICS    = 99999,
+< /
+282a306
+> 

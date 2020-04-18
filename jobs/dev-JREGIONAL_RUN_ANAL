@@ -1,0 +1,157 @@
+#!/bin/bash
+
+#
+#-----------------------------------------------------------------------
+#
+# This script copies files from various directories into the experiment
+# directory, creates links to some of them, and modifies others (e.g. 
+# templates) to customize them for the current experiment setup.
+#
+#-----------------------------------------------------------------------
+#
+
+#
+#-----------------------------------------------------------------------
+#
+# Source the variable definitions file and the bash utility functions.
+#
+#-----------------------------------------------------------------------
+#
+. ${GLOBAL_VAR_DEFNS_FP}
+. $USHDIR/source_util_funcs.sh
+#
+#-----------------------------------------------------------------------
+#
+# Save current shell options (in a global array).  Then set new options
+# for this script/function.
+#
+#-----------------------------------------------------------------------
+#
+{ save_shell_opts; set -u +x; } > /dev/null 2>&1
+#
+#-----------------------------------------------------------------------
+#
+# Get the full path to the file in which this script/function is located 
+# (scrfunc_fp), the name of that file (scrfunc_fn), and the directory in
+# which the file is located (scrfunc_dir).
+#
+#-----------------------------------------------------------------------
+#
+scrfunc_fp=$( readlink -f "${BASH_SOURCE[0]}" )
+scrfunc_fn=$( basename "${scrfunc_fp}" )
+scrfunc_dir=$( dirname "${scrfunc_fp}" )
+#
+#-----------------------------------------------------------------------
+#
+# Print message indicating entry into script.
+#
+#-----------------------------------------------------------------------
+#
+print_info_msg "
+========================================================================
+Entering script:  \"${scrfunc_fn}\"
+In directory:     \"${scrfunc_dir}\"
+
+This is the J-job script for the task that runs a forecast with FV3 for 
+the specified cycle.
+========================================================================"
+#
+#-----------------------------------------------------------------------
+#
+# Create the working directory directories under the cycle directory.
+#
+#-----------------------------------------------------------------------
+
+##############################################
+# Obtain unique process id (pid) and make temp directory
+##############################################
+#cltthinkdeb export DATA=${STMP}/${envir}/tmpnwprd-${CDATE}/${job}_${CYCrun}
+#-----------------------------------------------------------------------
+#
+set -xu
+if [ $tmmark = tm12 ] ; then
+     export tmmark_next=tm06
+     export tmmark_prev=tm12
+else
+    nexthr=$(( `echo $tmmark | cut -c 3-4` - 1 ))
+    prevhr=$(( `echo $tmmark | cut -c 3-4` + 1 ))
+     [ $nexthr -lt 0 ] &&  nexthr=0
+export    tmmark_next=tm$(printf "%02d" $nexthr)
+export    tmmark_prev=tm$(printf "%02d" $prevhr)
+fi
+
+export PDY=`echo $CDATE | cut -c 1-8`
+export CYC=`echo $CDATE | cut -c 9-10`
+
+export COMOUT=${COMROOT}/${envir}/${RUN}.${PDY}/${CYC}
+export GUESSdir=$COMOUT/guess.${tmmark}
+export ANLdir=$COMOUT/anl.${tmmark}
+mkdir -p $ANLdir
+
+export DATA=${CYCLE_DIR}//${job}
+mkdir -p $DATA
+export pid=$$
+export pgmout="OUTPUT.${pid}"
+
+#
+
+if [ $MACHINE = HERA ] ; then
+export COMINbias=$COMOUT
+export MYGDAS=$COMINgfs/gdas.${PDY}/${CYC}
+else
+echo "this IF branch is to be finished, exit now"
+exit
+fi
+mkdir_vrfy -p $DATA
+mkdir_vrfy -p ${CYCLE_DIR}/RESTART
+#-------------------------set up some parameters ----------------
+
+offset=`echo $tmmark | cut -c 3-4`
+export vlddate=`$NDATE -${offset} $CDATE`
+export SDATE=$vlddate
+export cyc=`echo $vlddate | cut -c 9-10`
+export cya=$cyc
+export CYC=$cyc
+export PDY=`echo $vlddate | cut -c 1-8`
+export PDYa=$PDY
+export PDYrun=`echo $CDATE | cut -c 1-8`
+export CYCrun=`echo $CDATE | cut -c 9-10`
+
+export CYCLEtm12=`$NDATE -12 $CYCLE`
+export CYCLEtm06=`$NDATE -06 $CYCLE`
+export PDYtm06=`echo $CYCLEtm06 | cut -c 1-8`
+export PDYtm06=`echo $CYCLEtm06 | cut -c 1-8`
+export cyctm06=`echo $CYCLEtm06 | cut -c 9-10`
+#
+#-----------------------------------------------------------------------
+#
+# Call the ex-script for this J-job and pass to it the necessary varia-
+# bles.
+#
+#-----------------------------------------------------------------------
+#
+$SCRIPTSDIR/dev-exregional_run_gsianl.sh  || \
+print_err_msg_exit "\
+Call to ex-script corresponding to J-job \"${scrfunc_fn}\" failed."
+#
+#-----------------------------------------------------------------------
+#
+# Print exit message.
+#
+#-----------------------------------------------------------------------
+#
+print_info_msg "
+========================================================================
+Exiting script:  \"${scrfunc_fn}\"
+In directory:    \"${scrfunc_dir}\"
+========================================================================"
+#
+#-----------------------------------------------------------------------
+#
+# Restore the shell options saved at the beginning of this script/func-
+# tion.
+#
+#-----------------------------------------------------------------------
+#
+{ restore_shell_opts; } > /dev/null 2>&1
+
