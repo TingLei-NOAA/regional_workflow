@@ -81,6 +81,7 @@ if [ "${RUN_ENVIR}" = "nco" ]; then
 else
   postprd_dir="${CYCLE_DIR}/postprd"
 fi
+
 export INPUT_DATA_DIR=${INPUT_DATA:-$CYCLE_DIR/$CDATE/${fcst_job}_${CYC}}
 mkdir_vrfy -p "${postprd_dir}"
 
@@ -89,6 +90,7 @@ check_for_preexist_dir "${fhr_dir}" "delete"
 mkdir_vrfy -p "${fhr_dir}"
 
 cd_vrfy "${fhr_dir}"
+
 #
 #-----------------------------------------------------------------------
 #

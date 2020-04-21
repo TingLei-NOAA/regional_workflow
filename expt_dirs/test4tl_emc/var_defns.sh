@@ -562,7 +562,7 @@ JPgrid_KAPPA_PARAM="-0.23209"
 #
 #-----------------------------------------------------------------------
 #
-DT_ATMOS="18"
+DT_ATMOS="90"
 #
 #-----------------------------------------------------------------------
 #
@@ -1065,7 +1065,7 @@ echo "thinkdeb250 1 num_fhrs = " $num_fhrs
 #
 #-----------------------------------------------------------------------
 #
-NCORES_PER_NODE="24"
+NCORES_PER_NODE="40"
 PE_MEMBER01="1404"
 #cltthink
 export NDATE=${NDATE:-/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate}
@@ -1078,6 +1078,7 @@ export COMINrap=${COMINrap:-/scratch1/NCEPDEV/rstprod/com/rap/prod}
 export COMINrap_user=${COMINrap2:-/scratch2/NCEPDEV/stmp1/Ting.Lei/dr-obs}
 export GESROOT_HOLD=${PTMP}/nwges/${NET}.hold
 export gsiexec="/scratch2/NCEPDEV/fv3-cam/Ting.Lei/dr-CAM_new/dr-add_ensemble_dualv1mix1/ProdGSI/build/bin/gsi.x"
+#export WGRIB2=${EXECDIR}/wgrib2new
    if [ ${EXTRN_MDL_NAME_ICS}  = FV3GFS ] ; then	# SAR-DA
        echo "thinkdeb251 tmmark is " $tmmark 
         if [ $tmmark = tm12 ] ; then	# SAR-DA

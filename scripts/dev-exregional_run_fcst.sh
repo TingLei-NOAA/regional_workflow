@@ -747,7 +747,8 @@ export OMP_STACKSIZE=1024m
 #
 #-----------------------------------------------------------------------
 #
-$APRUN ./fv3_gfs.x || print_err_msg_exit "\
+#ctl $APRUN ./fv3_gfs.x || print_err_msg_exit "\
+srun --label --ntasks=1440  --ntasks-per-node=20  --cpus-per-task=2  ./fv3_gfs.x || print_err_msg_exit "\
 Call to executable to run FV3SAR forecast returned with nonzero exit 
 code."
 report-mem

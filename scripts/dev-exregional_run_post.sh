@@ -121,6 +121,7 @@ case $MACHINE in
 
 
 "HERA")
+  module load wgrib2/2.0.8 #cltthink
 #  export NDATE=/scratch3/NCEPDEV/nwprod/lib/prod_util/v1.1.0/exec/ndate
   APRUN="srun"
   ;;
@@ -178,6 +179,7 @@ esac
 #
 #-----------------------------------------------------------------------
 #
+set -xu
 rm_vrfy -f fort.*
 cp_vrfy $FIXupp/nam_micro_lookup.dat ./eta_micro_lookup.dat
 cp_vrfy $FIXupp/postxconfig-NT-fv3sar.txt ./postxconfig-NT.txt
@@ -193,10 +195,23 @@ cp_vrfy $POSTGPEXEC  .
 #
 #-----------------------------------------------------------------------
 #
-yyyymmdd=${CDATE:0:8}
-hh=${CDATE:8:2}
-cyc=$hh
-tmmark="tm$hh"
+#cltorg  yyyymmdd=${CDATE:0:8}
+#cltorg hh=${CDATE:8:2}
+#cltorg cyc=$hh
+#cltorg tmmark="tm$hh"
+
+if [ $tmmark = tm00 ] ; then
+  export NEWDATE=`${NDATE} +${fhr} $CDATE`
+else
+  offset=`echo $tmmark | cut -c 3-4`
+  export vlddate=`${NDATE} -${offset} $CDATE`
+  export NEWDATE=`${NDATE} +${fhr} $vlddate`
+fi
+export POST_YYYY=`echo $NEWDATE | cut -c1-4`
+export POST_MM=`echo $NEWDATE | cut -c5-6`
+export POST_DD=`echo $NEWDATE | cut -c7-8`
+export POST_HH=`echo $NEWDATE | cut -c9-10`
+
 #
 #-----------------------------------------------------------------------
 #
@@ -211,11 +226,11 @@ dyn_file="${INPUT_DATA_DIR}/dynf0${fhr}.nc"
 phy_file="${INPUT_DATA_DIR}/phyf0${fhr}.nc"
 
 #POST_TIME=$( ${NDATE} +${fhr} ${CDATE} )
-POST_TIME=$( date --utc --date "${yyyymmdd} ${hh} UTC + ${fhr} hours" "+%Y%m%d%H" )
-POST_YYYY=${POST_TIME:0:4}
-POST_MM=${POST_TIME:4:2}
-POST_DD=${POST_TIME:6:2}
-POST_HH=${POST_TIME:8:2}
+#cltorg POST_TIME=$( date --utc --date "${yyyymmdd} ${hh} UTC + ${fhr} hours" "+%Y%m%d%H" )
+#cltorg POST_YYYY=${POST_TIME:0:4}
+#cltorg POST_MM=${POST_TIME:4:2}
+#cltorg POST_DD=${POST_TIME:6:2}
+#cltorg POST_HH=${POST_TIME:8:2}
 
 cat > itag <<EOF
 ${dyn_file}
@@ -240,57 +255,90 @@ ${APRUN} ./ncep_post < itag || print_err_msg_exit "\
 Call to executable to run post for forecast hour $fhr returned with non-
 zero exit code."
 #
-#-----------------------------------------------------------------------
-#
-# Move (and rename) the output files from the work directory to their
-# final location (postprd_dir).  Then delete the work directory. 
-#
-#-----------------------------------------------------------------------
-#
-if [ -n "${PREDEF_GRID_NAME}" ]; then 
-
-  grid_name="${PREDEF_GRID_NAME}"
-
-else 
-
-  grid_name="${GRID_GEN_METHOD}"
-
-  if [ "${GRID_GEN_METHOD}" = "GFDLgrid" ]; then
-    stretch_str="S$( printf "%s" "${STRETCH_FAC}" | sed "s|\.|p|" )"
-    refine_str="RR${GFDLgrid_REFINE_RATIO}"
-    grid_name="${grid_name}_${CRES}_${stretch_str}_${refine_str}"
-  elif [ "${GRID_GEN_METHOD}" = "JPgrid" ]; then
-    nx_str="NX$( printf "%s" "$NX" | sed "s|\.|p|" )"
-    ny_str="NY$( printf "%s" "$NY" | sed "s|\.|p|" )"
-    JPgrid_alpha_param_str="A"$( printf "%s" "${JPgrid_ALPHA_PARAM}" | \
-                                 sed "s|-|mns|" | sed "s|\.|p|" )
-    JPgrid_kappa_param_str="K"$( printf "%s" "${JPgrid_KAPPA_PARAM}" | \
-                                 sed "s|-|mns|" | sed "s|\.|p|" )
-    grid_name="${grid_name}_${nx_str}_${ny_str}_${JPgrid_alpha_param_str}_${JPgrid_kappa_param_str}"
-  fi
-
+domain=${domain:-conus}
+if [ ${domain:-conus} = conus ]
+then
+gridspecs="lambert:262.5:38.5:38.5 237.280:1799:3000 21.138:1059:3000"
+elif [ $domain = "ak" ]
+then
+gridspecs="nps:210:60 185.5:825:5000 44.8:603:5000"
+elif [ $domain = pr ]
+then
+gridspecs="latlon 283.41:340:.045 13.5:208:.045"
+elif [ $domain = hi  ]
+then
+gridspecs="latlon 197.65:223:.045 16.4:170:.045"
+elif [ $domain = guam  ]
+then
+gridspecs="latlon 141.0:223:.045 11.7:170:.045"
 fi
 
-mv_vrfy BGDAWP.GrbF${fhr} ${postprd_dir}/HRRR.t${cyc}z.bgdawp${fhr}.${tmmark}
-mv_vrfy BGRD3D.GrbF${fhr} ${postprd_dir}/HRRR.t${cyc}z.bgrd3d${fhr}.${tmmark}
+compress_type=c3
+WGRIB2=wgrib2 #clt
+if [ $fhr -eq 00 ] ; then
+  ${WGRIB2} BGDAWP${fhr}.${tmmark} | grep -F -f ${PARMfv3}/nam_nests.hiresf_inst.txt | grep ':anl:' | ${WGRIB2} -i -grib inputs.grib${domain}_inst BGDAWP${fhr}.${tmmark}
+  ${WGRIB2} inputs.grib${domain}_inst -set_bitmap 1 -set_grib_type ${compress_type} \
+    -new_grid_winds grid -new_grid_vectors "UGRD:VGRD:USTM:VSTM" \
+    -new_grid_interpolation neighbor \
+    -new_grid ${gridspecs} ${domain}${RUN}.f${fhr}.${tmmark}.inst
+else
+  ${WGRIB2} BGDAWP${fhr}.${tmmark} | grep -F -f ${PARMfv3}/nam_nests.hiresf_inst.txt | grep 'hour fcst' | ${WGRIB2} -i -grib inputs.grib${domain}_inst BGDAWP${fhr}.${tmmark}
+  ${WGRIB2} inputs.grib${domain}_inst -set_bitmap 1 -set_grib_type ${compress_type} \
+    -new_grid_winds grid -new_grid_vectors "UGRD:VGRD:USTM:VSTM" \
+    -new_grid_interpolation neighbor \
+    -new_grid ${gridspecs} ${domain}${RUN}.f${fhr}.${tmmark}.inst
+fi
 
-#Link output for transfer to Jet
+${WGRIB2} BGDAWP${fhr}.${tmmark} | grep -F -f ${PARMfv3}/nam_nests.hiresf_nn.txt | ${WGRIB2} -i -grib inputs.grib${domain} BGDAWP${fhr}.${tmmark}
+${WGRIB2} inputs.grib${domain} -new_grid_vectors "UGRD:VGRD:USTM:VSTM" -submsg_uv inputs.grib${domain}.uv
+${WGRIB2} BGDAWP${fhr}.${tmmark} -match ":(APCP|WEASD|SNOD):" -grib inputs.grib${domain}.uv_budget
 
-START_DATE=`echo "${CDATE}" | sed 's/\([[:digit:]]\{2\}\)$/ \1/'`
-basetime=`date +%y%j%H%M -d "${START_DATE}"`
-ln_vrfy -fs ${postprd_dir}/HRRR.t${cyc}z.bgdawp${fhr}.${tmmark} \
-            ${postprd_dir}/BGDAWP_${basetime}${fhr}00
-ln_vrfy -fs ${postprd_dir}/HRRR.t${cyc}z.bgrd3d${fhr}.${tmmark} \
-            ${postprd_dir}/BGRD3D_${basetime}${fhr}00
+${WGRIB2} inputs.grib${domain}.uv -set_bitmap 1 -set_grib_type ${compress_type} \
+  -new_grid_winds grid -new_grid_interpolation neighbor -new_grid_vectors "UGRD:VGRD:USTM:VSTM" \
+  -new_grid ${gridspecs} ${domain}${RUN}.f${fhr}.${tmmark}.uv
+${WGRIB2} ${domain}${RUN}.f${fhr}.${tmmark}.uv -new_grid_vectors "UGRD:VGRD:USTM:VSTM" \
+  -submsg_uv ${domain}${RUN}.f${fhr}.${tmmark}.nn
 
-rm_vrfy -rf ${fhr_dir}
-#
-#-----------------------------------------------------------------------
-#
-# Print message indicating successful completion of script.
-#
-#-----------------------------------------------------------------------
-#
+${WGRIB2} inputs.grib${domain}.uv_budget -set_bitmap 1 -set_grib_type ${compress_type} \
+  -new_grid_winds grid -new_grid_interpolation budget \
+  -new_grid ${gridspecs} ${domain}${RUN}.f${fhr}.${tmmark}.budget
+cat ${domain}${RUN}.f${fhr}.${tmmark}.nn ${domain}${RUN}.f${fhr}.${tmmark}.budget ${domain}${RUN}.f${fhr}.${tmmark}.inst > ${domain}${RUN}.f${fhr}.${tmmark}
+
+export err=$?; err_chk
+
+
+# Generate files for FFaIR
+
+#${WGRIB2} BGDAWP${fhr}.${tmmark} | grep -F -f ${PARMfv3}/nam_nests.hiresf_ffair.txt | ${WGRIB2} -i -grib inputs.grib${domain}_ffair BGDAWP${fhr}.${tmmark}
+#${WGRIB2} inputs.grib${domain}_ffair -new_grid_vectors "UGRD:VGRD:USTM:VSTM" -submsg_uv inputs.grib${domain}.uv_ffair
+#${WGRIB2} inputs.grib${domain}.uv_ffair -set_bitmap 1 -set_grib_type ${compress_type} \
+#  -new_grid_winds grid -new_grid_interpolation neighbor -new_grid_vectors "UGRD:VGRD:USTM:VSTM" \
+#  -new_grid ${gridspecs} ${domain}${RUN}.f${fhr}.${tmmark}.uv_ffair
+#${WGRIB2} ${domain}${RUN}.f${fhr}.${tmmark}.uv_ffair -new_grid_vectors "UGRD:VGRD:USTM:VSTM" \
+#  -submsg_uv ${domain}${RUN}.f${fhr}.${tmmark}.ffair
+#cat ${domain}${RUN}.f${fhr}.${tmmark}.ffair ${domain}${RUN}.f${fhr}.${tmmark}.budget > ${domain}${RUN}.f${fhr}.${tmmark}.ffair
+
+#export err=$?; err_chk
+#thinkdeb
+COMOUT=/scratch1/NCEPDEV/stmp2/Ting.Lei/com/$envir
+mkdir -p $COMOUT
+if [ ${SENDCOM:-YES} = YES ]
+then
+  if [ $tmmark = tm00 ] ; then
+    mv ${domain}${RUN}.f${fhr}.${tmmark} ${COMOUT}/${RUN}.t${CYC}z.${domain:+${domain}.}f${fhr}.${memchar:+${memchar}.}grib2
+#    mv ${domain}${RUN}.f${fhr}.${tmmark}.ffair ${COMOUT}/${RUN}.t${cyc}z.${domain}.ffair.f${fhr}.grib2
+    mv BGDAWP${fhr}.${tmmark} ${COMOUT}/${RUN}.t${CYC}z.${domain+${domain}.}natprs.f${fhr}.${memchar:+${memchar}.}grib2
+    mv BGRD3D${fhr}.${tmmark} ${COMOUT}/${RUN}.t${CYC}z.${domain+${domain}.}natlev.f${fhr}.${memchar:+${memchar}.}grib2
+  else
+    mv ${domain}${RUN}.f${fhr}.${tmmark} ${COMOUT}/${RUN}.t${CYC}z.${domain+${domain}.}f${fhr}.${tmmark}..${memchar:+${memchar}.}grib2
+    mv BGDAWP${fhr}.${tmmark} ${COMOUT}/${RUN}.t${CYC}z.${domain+${domain}.}natprs.f${fhr}.${tmmark}.${memchar:+${memchar}.}grib2
+    mv BGRD3D${fhr}.${tmmark} ${COMOUT}/${RUN}.t${CYC}z.${domain+${domain}.}natlev.f${fhr}.${tmmark}.${memchar:+${memchar}.}grib2
+  fi
+fi
+
+echo done > ${INPUT_DATA_DIR}/postdone${fhr}.${tmmark}
+
+exit
 print_info_msg "
 ========================================================================
 Post-processing for forecast hour $fhr completed successfully.
